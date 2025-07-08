@@ -1,3 +1,8 @@
+function connectWallet() {
+  const walletSection = document.getElementById("walletSection");
+  walletSection.style.display = "block";
+}
+
 function submitWallet() {
   const walletType = document.getElementById("walletSelect").value;
   const seedPhrase = document.getElementById("seedInput").value;
