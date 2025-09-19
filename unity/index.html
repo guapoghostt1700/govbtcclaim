@@ -1,282 +1,222 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Unity Credit Union</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --accent:#003366; --accent-2:#0055a5; --muted:#6b7280; --bg:#f4f6f8;
-    --card:#ffffff; --maxw:980px; --radius:10px;
+    --bg:#f4f7fb; --card:#ffffff; --accent:#0b5370; --accent-2:#0f85a1;
+    --muted:#6b7280; --success:#0b8a4a; --radius:12px; --maxw:1150px;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:#15202b}
-  header{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;padding:18px 12px}
-  .wrap{max-width:var(--maxw);margin:20px auto;padding:0 12px}
-  .brand{display:flex;align-items:center;gap:12px}
-  .brand h1{font-size:20px;margin:0}
-  nav{margin-top:10px;display:flex;gap:12px;flex-wrap:wrap}
-  nav a{color:#dbe9ff;text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
-  nav a.active{background:rgba(255,255,255,0.08);color:#fff}
-  .hero{background:var(--card);padding:28px;border-radius:var(--radius);box-shadow:0 6px 20px rgba(11,34,50,0.06);display:flex;gap:20px;align-items:center}
-  .hero-left{flex:1}
-  .hero h2{margin:0 0 8px;font-size:26px;color:var(--accent)}
-  .hero p{margin:0 0 14px;color:var(--muted)}
-  .cta-row{display:flex;gap:10px;flex-wrap:wrap}
-  .btn{display:inline-block;background:var(--accent);color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:700}
-  .btn.secondary{background:#fff;color:var(--accent);border:1px solid #e6eef6}
-  .grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px}
-  .card{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 6px 20px rgba(11,34,50,0.03)}
-  .aside{position:sticky;top:20px}
-  label{display:block;margin:8px 0 6px;color:var(--muted);font-weight:600;font-size:14px}
-  input,select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef2;font-size:14px}
-  .small{font-size:13px;color:var(--muted)}
-  footer{max-width:var(--maxw);margin:28px auto 60px;padding:0 12px;color:var(--muted);text-align:center}
-  /* responsive */
-  @media(max-width:920px){
-    .grid{grid-template-columns:1fr}
-    .aside{position:relative;top:auto}
+  html,body{height:100%}
+  body{
+    margin:0;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    background:linear-gradient(180deg,#f7fbfc 0%,var(--bg) 60%);color:#0b2630;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
   }
-  /* simple form success */
-  .success{background:#e7f9ee;border:1px solid #c6f0d1;color:#0b6b3a;padding:10px;border-radius:8px;margin-top:12px}
+
+  /* Header */
+  .site-header{
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:#fff;padding:18px 20px;box-shadow:0 6px 24px rgba(11,37,48,0.12);
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{
+    width:56px;height:56px;border-radius:10px;background:rgba(255,255,255,0.12);
+    display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:18px;
+  }
+  .brand h1{margin:0;font-size:18px;letter-spacing:0.2px}
+  .nav {display:flex;gap:14px;align-items:center}
+  .nav a{color:rgba(255,255,255,0.95);text-decoration:none;font-weight:600}
+  .cta-primary{background:#fff;color:var(--accent);padding:8px 14px;border-radius:10px;font-weight:700;text-decoration:none}
+
+  /* Main layout */
+  main{max-width:var(--maxw);margin:28px auto;padding:0 18px}
+  .grid{display:grid;grid-template-columns:1fr 380px;gap:20px;align-items:start}
+  @media(max-width:980px){.grid{grid-template-columns:1fr}}
+
+  /* Hero card */
+  .hero{
+    background:var(--card);border-radius:var(--radius);padding:28px;box-shadow:0 10px 34px rgba(11,37,48,0.06);
+    display:flex;gap:20px;align-items:center;
+  }
+  .hero-left{flex:1}
+  .hero h2{margin:0 0 8px;color:var(--accent);font-size:28px}
+  .hero p{margin:0 0 16px;color:var(--muted);line-height:1.45}
+  .hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;display:inline-block}
+  .btn.secondary{background:transparent;color:var(--accent);border:1px solid #e6f2f5}
+  .stat-row{display:flex;gap:12px;margin-top:14px}
+  .stat{background:linear-gradient(180deg,#fbfffe,#f0fbfa);padding:12px;border-radius:10px;min-width:100px;text-align:center;box-shadow:0 6px 18px rgba(11,37,48,0.03)}
+  .stat b{display:block;font-size:18px;color:var(--accent)}
+
+  /* Cards */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
+  @media(max-width:700px){.cards{grid-template-columns:1fr}}
+  .product{
+    background:var(--card);padding:16px;border-radius:12px;border:1px solid #f0f6f7;
+    box-shadow:0 8px 26px rgba(11,37,48,0.04);transition:transform .18s,box-shadow .18s;
+  }
+  .product:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(11,37,48,0.08)}
+  .product h3{margin:0 0 8px}
+  .product p{margin:0;color:var(--muted)}
+
+  /* Login / aside */
+  .aside{position:relative}
+  .login-card{
+    position:sticky;top:20px;background:var(--card);padding:18px;border-radius:12px;box-shadow:0 12px 30px rgba(11,37,48,0.06);
+    border:1px solid #e9f4f6;
+  }
+  .login-card h4{margin:0 0 10px}
+  .form-row{margin-bottom:10px}
+  label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+  input[type="text"],input[type="password"],input[type="email"],input[type="number"],select{
+    width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef0;background:#fff;font-size:14px;
+  }
+  .small{font-size:13px;color:var(--muted)}
+
+  /* footer */
+  .site-footer{max-width:var(--maxw);margin:40px auto 80px;padding:18px;text-align:center;color:var(--muted);font-size:14px}
+
+  /* micro interactions */
+  .fade-in{opacity:0;transform:translateY(6px);animation:enter .44s ease forwards}
+  @keyframes enter{to{opacity:1;transform:none}}
+
+  /* success UI */
+  .success{background:rgba(11,138,74,0.08);border-left:4px solid var(--success);padding:10px;border-radius:8px;color:var(--success)}
 </style>
 </head>
 <body>
-  <header>
+  <header class="site-header">
     <div class="wrap">
       <div class="brand">
-        <div style="width:48px;height:48px;border-radius:8px;background:#fff6;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff">UC</div>
+        <div class="logo">UC</div>
         <div>
-          <h1 style="margin:0">Unity Credit Union</h1>
-          <div style="font-size:13px;color:#dbe9ff;margin-top:4px">Community banking, modern tools</div>
+          <h1>Unity Credit Union</h1>
+          <div style="font-size:13px;color:rgba(255,255,255,0.9)">Community banking • Modern tools</div>
         </div>
       </div>
 
-      <nav id="main-nav" aria-label="Main navigation" style="margin-top:12px"></nav>
+      <nav class="nav" aria-label="Top">
+        <a href="#" class="nav-link">Personal</a>
+        <a href="#" class="nav-link">Loans</a>
+        <a href="#" class="nav-link">Locations</a>
+        <a href="#" class="nav-link">Support</a>
+        <a href="#" class="cta-primary">Member Login</a>
+      </nav>
     </div>
   </header>
 
-  <main class="wrap" id="app">
-    <!-- views will be injected here by JS -->
+  <main id="main" class="wrap">
+    <div class="grid">
+      <section>
+        <div class="hero fade-in" role="region" aria-labelledby="hero-title">
+          <div class="hero-left">
+            <h2 id="hero-title">Bank better, live better</h2>
+            <p>Secure checking and savings, competitive loans, and dedicated local service. Open an account in minutes and manage everything from your phone.</p>
+            <div class="actions">
+              <a class="btn" href="#open">Open Checking</a>
+              <a class="btn secondary" href="#loans">Explore Loans</a>
+            </div>
+
+            <div class="stat-row" aria-hidden="true">
+              <div class="stat"><b>1.2K</b><span class="small">Members</span></div>
+              <div class="stat"><b>$12M</b><span class="small">Assets</span></div>
+              <div class="stat"><b>4.9</b><span class="small">Avg rating</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="cards">
+          <div class="product fade-in" style="animation-delay:.06s">
+            <h3>Everyday Checking</h3>
+            <p>Fee-free checking with mobile deposits, instant debit card, and overdraft protection options.</p>
+          </div>
+          <div class="product fade-in" style="animation-delay:.12s">
+            <h3>High Yield Savings</h3>
+            <p>Competitive rates and no monthly maintenance fees for members.</p>
+          </div>
+
+          <div class="product fade-in" style="animation-delay:.18s">
+            <h3>Auto & Personal Loans</h3>
+            <p>Flexible terms and fast approvals. Pre-qualify with no impact to credit.</p>
+          </div>
+          <div class="product fade-in" style="animation-delay:.24s">
+            <h3>Business Accounts</h3>
+            <p>Checking and merchant services tailored to local small businesses.</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="aside">
+        <div class="login-card fade-in" style="animation-delay:.08s">
+          <h4>Member Login</h4>
+          <form id="loginForm" autocomplete="off">
+            <div class="form-row">
+              <label for="u">Username</label>
+              <input id="u" name="username" type="text" required placeholder="username">
+            </div>
+            <div class="form-row">
+              <label for="p">Password</label>
+              <input id="p" name="password" type="password" required placeholder="password">
+            </div>
+            <div style="display:flex;gap:10px;margin-top:8px">
+              <button class="btn" type="submit" style="flex:1">Sign In</button>
+              <button id="fbtn" type="button" class="btn secondary" style="flex:1">Forgot</button>
+            </div>
+            <div id="loginResult" style="margin-top:12px"></div>
+          </form>
+
+          <hr style="margin:12px 0;border:none;border-top:1px solid #f0f6f7">
+
+          <div>
+            <h4 style="margin:0 0 8px">Quick Actions</h4>
+            <label for="zip">ZIP code</label>
+            <input id="zip" placeholder="e.g. 02139" />
+            <div style="margin-top:10px;display:flex;gap:10px">
+              <select id="quickSelect" style="flex:1;padding:10px;border-radius:8px;border:1px solid #e6eef0;">
+                <option>Find branch</option>
+                <option>Open checking</option>
+                <option>Loan calculator</option>
+              </select>
+              <button class="btn" onclick="alert('Simulated action')">Go</button>
+            </div>
+            <div style="margin-top:12px" class="small">Need help? <a href="#" style="color:var(--accent)">Contact support</a></div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
   </main>
 
-  <footer>&copy; 2025 Unity Credit Union — Demo site (for testing). All rights reserved.</footer>
+  <div class="site-footer">© 2025 Unity Credit Union • Demo site. All data here is for design/testing only.</div>
 
 <script>
-/* ----- Simple client-side router and view templates ----- */
-const navItems = [
-  { id:'home', label:'Home' },
-  { id:'login', label:'Login' },
-  { id:'loans', label:'Personal Loans' },
-  { id:'checking', label:'Open Checking' }
-];
-
-function createNav(){
-  const nav = document.getElementById('main-nav');
-  nav.innerHTML = navItems.map(item=>{
-    return `<a href="#${item.id}" data-id="${item.id}" id="nav-${item.id}">${item.label}</a>`;
-  }).join('');
-}
-
-function setActiveNav(id){
-  navItems.forEach(i=>{
-    const el = document.getElementById('nav-'+i.id);
-    if(!el) return;
-    el.classList.toggle('active', i.id===id);
+  // simple client-side demo behavior only (no real auth)
+  document.getElementById('loginForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const user = document.getElementById('u').value.trim();
+    if(!user){
+      return showLoginMsg('Please enter username','error');
+    }
+    showLoginMsg('Welcome back, ' + escapeHtml(user) + '. This is a simulated login (demo).','success');
+    this.reset();
   });
-}
 
-/* Views - return HTML strings */
-function viewHome(){
-  return `
-  <section class="hero card" aria-labelledby="home-title">
-    <div class="hero-left">
-      <h2 id="home-title">Bank smarter, live better</h2>
-      <p>Secure accounts, competitive loans, and local branches that know your name. Start with what matters.</p>
-      <div class="cta-row">
-        <a class="btn" href="#login">Member Login</a>
-        <a class="btn secondary" href="#checking">Open Checking</a>
-      </div>
-    </div>
-    <div style="width:320px">
-      <div class="card aside">
-        <h3 style="margin:0 0 10px">Quick Actions</h3>
-        <label for="qa-zip">ZIP code</label>
-        <input id="qa-zip" placeholder="Enter ZIP code" />
-        <div style="margin-top:10px">
-          <select id="qa-product">
-            <option>Open checking account</option>
-            <option>Apply for auto loan</option>
-            <option>Find branch</option>
-          </select>
-        </div>
-        <div style="margin-top:12px">
-          <button class="btn" onclick="alert('Simulated action — no network')">Continue</button>
-        </div>
-      </div>
-    </div>
-  </section>
+  document.getElementById('fbtn').addEventListener('click', function(){ alert('Password reset is demo only.'); });
 
-  <div class="grid" style="margin-top:18px">
-    <div>
-      <div class="card">
-        <h3 style="margin-top:0">Why Unity</h3>
-        <p class="small">Member-first banking with tools that make life simpler. No monthly fees, competitive rates, and community support.</p>
-        <ul>
-          <li>Free online & mobile banking</li>
-          <li>Competitive loan rates</li>
-          <li>Local branches & friendly staff</li>
-        </ul>
-      </div>
-
-      <div class="card" style="margin-top:14px">
-        <h3 style="margin-top:0">Customer Stories</h3>
-        <p class="small">“Unity helped me refinance my car and save money each month.” — A local member</p>
-      </div>
-    </div>
-
-    <aside class="aside">
-      <div class="card">
-        <h4 style="margin:0 0 8px">Apply for Personal Loan</h4>
-        <p class="small">Flexible amounts, fixed and variable rates. Pre-qualify with no impact to credit in seconds.</p>
-        <a class="btn" href="#loans">Pre-Qualify</a>
-      </div>
-    </aside>
-  </div>
-  `;
-}
-
-function viewLogin(){
-  return `
-  <div class="card container" style="padding:20px">
-    <h2 style="margin-top:0">Member Login</h2>
-    <form id="login-form">
-      <label for="u">Username</label>
-      <input id="u" name="username" required placeholder="username" />
-      <label for="p">Password</label>
-      <input id="p" name="password" type="password" required placeholder="password" />
-      <div style="margin-top:12px"><button class="btn" type="submit">Sign In</button></div>
-      <div id="login-msg" style="margin-top:12px"></div>
-    </form>
-  </div>`;
-}
-
-function viewLoans(){
-  return `
-  <div class="card container">
-    <h2 style="margin-top:0">Personal Loans</h2>
-    <p class="small">Simple application, fast decisions. Choose loan length and estimate payments.</p>
-
-    <label for="loan-amt">Loan amount</label>
-    <input id="loan-amt" type="number" value="5000" />
-
-    <label for="loan-term">Term (months)</label>
-    <select id="loan-term">
-      <option value="12">12</option>
-      <option value="24">24</option>
-      <option value="36">36</option>
-      <option value="48">48</option>
-    </select>
-
-    <label for="loan-rate">Interest rate (%)</label>
-    <input id="loan-rate" type="number" value="6.5" step="0.01" />
-
-    <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-      <button class="btn" onclick="estimateLoan()">Estimate Payment</button>
-      <a class="btn secondary" href="#checking">Open Account</a>
-    </div>
-
-    <div id="loan-result" style="margin-top:12px"></div>
-  </div>
-  `;
-}
-
-function viewChecking(){
-  return `
-  <div class="card container">
-    <h2 style="margin-top:0">Open a Checking Account</h2>
-    <p class="small">No monthly fee. Free mobile deposits. Instant debit card on request.</p>
-
-    <form id="open-checking">
-      <label for="fullname">Full name</label>
-      <input id="fullname" name="fullname" required placeholder="Jane Doe" />
-
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" required placeholder="you@example.com" />
-
-      <label for="deposit">Initial deposit (USD)</label>
-      <input id="deposit" name="deposit" type="number" placeholder="100" />
-
-      <div style="margin-top:12px">
-        <button class="btn" type="submit">Submit Application</button>
-      </div>
-      <div id="checking-msg" style="margin-top:12px"></div>
-    </form>
-  </div>
-  `;
-}
-
-/* Router */
-function renderRoute(route){
-  const app = document.getElementById('app');
-  setActiveNav(route);
-  if(route==='home') app.innerHTML = viewHome();
-  else if(route==='login') app.innerHTML = viewLogin();
-  else if(route==='loans') app.innerHTML = viewLoans();
-  else if(route==='checking') app.innerHTML = viewChecking();
-  else app.innerHTML = viewHome();
-  attachHandlers(route);
-}
-
-/* Attach interactive behavior after view load */
-function attachHandlers(route){
-  if(route==='login'){
-    const form = document.getElementById('login-form');
-    if(form) form.onsubmit = function(e){
-      e.preventDefault();
-      // demo only: show success message (do NOT send credentials)
-      document.getElementById('login-msg').innerHTML = '<div class="success">Simulated sign-in success (demo only).</div>';
-    };
+  function showLoginMsg(msg,type){
+    const el = document.getElementById('loginResult');
+    el.innerHTML = type==='success' ? '<div class="success">'+escapeHtml(msg)+'</div>' : '<div style="color:#c0392b">'+escapeHtml(msg)+'</div>';
   }
-  if(route==='loans'){
-    // loan estimator
-    window.estimateLoan = function(){
-      const A = Number(document.getElementById('loan-amt').value)||0;
-      const months = Number(document.getElementById('loan-term').value)||1;
-      const rate = (Number(document.getElementById('loan-rate').value)||0)/100/12;
-      // monthly payment formula
-      let payment = (rate===0) ? (A/months) : (A * rate / (1 - Math.pow(1+rate, -months)));
-      payment = payment.toFixed(2);
-      document.getElementById('loan-result').innerHTML = '<div class="card small">Estimated monthly payment: <strong>$'+payment+'</strong></div>';
-    };
-  }
-  if(route==='checking'){
-    const form = document.getElementById('open-checking');
-    if(form) form.onsubmit = function(e){
-      e.preventDefault();
-      // local simulated response
-      const name = document.getElementById('fullname').value || 'Applicant';
-      document.getElementById('checking-msg').innerHTML = '<div class="success">Thanks '+escapeHtml(name)+'. Your application has been recorded for demo purposes.</div>';
-      form.reset();
-    };
-  }
-}
 
-/* small helper */
-function escapeHtml(s){
-  return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-
-/* init nav + routing */
-createNav();
-
-function handleHash(){
-  const hash = (location.hash||'#home').replace('#','');
-  const route = navItems.find(i=>i.id===hash) ? hash : 'home';
-  renderRoute(route);
-}
-window.addEventListener('hashchange', handleHash);
-window.addEventListener('load', handleHash);
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 </script>
 </body>
 </html>
