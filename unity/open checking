@@ -3,17 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Open Checking Account</title>
+  <title>Checking Account</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f7fa; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 20px;
+    }
     h1 { color: #003366; }
+    .account-info {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 20px auto;
+    }
     a { color: #0055a5; text-decoration: none; font-weight: bold; }
     a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <h1>Open a Checking Account</h1>
-  <p>Here you can simulate opening a checking account for the Unity Credit Union simulation.</p>
-  <a href="index.html">Go Back Home</a>
+  <h1>Checking Account</h1>
+  <div class="account-info">
+    <p>Account Number: **** **** 1234</p>
+    <p>Balance: $12,345.67</p>
+    <p>Recent Transactions:</p>
+    <ul>
+      <li>09/15/2025 - Deposit - $500.00</li>
+      <li>09/14/2025 - Withdrawal - $120.00</li>
+      <li>09/13/2025 - Deposit - $1,000.00</li>
+    </ul>
+  </div>
+  <a href="index.html">Back to Home</a>
 </body>
 </html>
