@@ -86,6 +86,13 @@
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       min-width: 250px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     .card h2 {
@@ -115,13 +122,23 @@
       padding: 15px;
       margin-top: 30px;
     }
+
+    @media (max-width: 900px) {
+      .card {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        flex: 1 1 100%;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <!-- Logo left -->
     <img src="logo.png" alt="Unity Credit Union Logo">
-    <!-- Login box right -->
     <div class="login-box">
       <form>
         <input type="text" placeholder="Username" required>
@@ -132,36 +149,36 @@
   </header>
 
   <nav>
-    <a href="#">Home</a>
-    <a href="#">Checking</a>
-    <a href="#">Loans</a>
-    <a href="#">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="checking.html">Checking</a>
+    <a href="loans.html">Loans</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
   <div class="container">
     <div class="grid">
-      <div class="card">
+      <div class="card" onclick="window.location.href='open-checking.html'">
         <h2>Open a Checking Account</h2>
         <p>Enjoy easy, convenient banking with our modern checking account options tailored for your lifestyle.</p>
-        <a href="#" class="btn">Open Now</a>
+        <a href="open-checking.html" class="btn">Open Now</a>
       </div>
 
-      <div class="card">
+      <div class="card" onclick="window.location.href='apply-loan.html'">
         <h2>Apply for a Loan</h2>
         <p>Need financial support? Our loan options come with flexible terms and competitive rates.</p>
-        <a href="#" class="btn">Apply Today</a>
+        <a href="apply-loan.html" class="btn">Apply Today</a>
       </div>
 
-      <div class="card">
+      <div class="card" onclick="window.location.href='personal-banking.html'">
         <h2>Personal Banking</h2>
         <p>From savings to retirement plans, Unity Credit Union is here to guide your financial journey.</p>
-        <a href="#" class="btn">Learn More</a>
+        <a href="personal-banking.html" class="btn">Learn More</a>
       </div>
     </div>
   </div>
 
   <footer>
-    <p>&copy; 2025 Unity Credit Union. All Rights Reserved.</p>
+    &copy; 2025 Unity Credit Union. All Rights Reserved.
   </footer>
 </body>
 </html>
