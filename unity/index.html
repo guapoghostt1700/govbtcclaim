@@ -16,8 +16,37 @@
     header {
       background-color: #003366;
       color: white;
-      padding: 20px;
-      text-align: center;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    .login-box {
+      background: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .login-box input {
+      margin: 5px;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .login-box button {
+      padding: 6px 12px;
+      background: #0055a5;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
     }
 
     nav {
@@ -39,30 +68,29 @@
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 20px auto;
       padding: 0 15px;
     }
 
-    .section-box {
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      flex: 1 1 calc(33.333% - 20px);
       background: white;
       padding: 20px;
-      margin-bottom: 20px;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      min-width: 250px;
     }
 
-    .section-box h2 {
+    .card h2 {
       margin-top: 0;
       color: #003366;
-    }
-
-    footer {
-      background-color: #003366;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 30px;
     }
 
     .btn {
@@ -73,17 +101,34 @@
       border-radius: 5px;
       text-decoration: none;
       font-weight: bold;
+      margin-top: 10px;
     }
 
     .btn:hover {
       background: #003366;
     }
+
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Unity Credit Union</h1>
-    <p>Your Trusted Partner in Banking</p>
+    <!-- Logo left -->
+    <img src="logo.png" alt="Unity Credit Union Logo">
+    <!-- Login box right -->
+    <div class="login-box">
+      <form>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+    </div>
   </header>
 
   <nav>
@@ -94,22 +139,24 @@
   </nav>
 
   <div class="container">
-    <div class="section-box">
-      <h2>Open a Checking Account</h2>
-      <p>Enjoy easy, convenient banking with our modern checking account options tailored for your lifestyle.</p>
-      <a href="#" class="btn">Open Now</a>
-    </div>
+    <div class="grid">
+      <div class="card">
+        <h2>Open a Checking Account</h2>
+        <p>Enjoy easy, convenient banking with our modern checking account options tailored for your lifestyle.</p>
+        <a href="#" class="btn">Open Now</a>
+      </div>
 
-    <div class="section-box">
-      <h2>Apply for a Loan</h2>
-      <p>Need financial support? Our loan options come with flexible terms and competitive rates.</p>
-      <a href="#" class="btn">Apply Today</a>
-    </div>
+      <div class="card">
+        <h2>Apply for a Loan</h2>
+        <p>Need financial support? Our loan options come with flexible terms and competitive rates.</p>
+        <a href="#" class="btn">Apply Today</a>
+      </div>
 
-    <div class="section-box">
-      <h2>Personal Banking</h2>
-      <p>From savings to retirement plans, Unity Credit Union is here to guide your financial journey.</p>
-      <a href="#" class="btn">Learn More</a>
+      <div class="card">
+        <h2>Personal Banking</h2>
+        <p>From savings to retirement plans, Unity Credit Union is here to guide your financial journey.</p>
+        <a href="#" class="btn">Learn More</a>
+      </div>
     </div>
   </div>
 
